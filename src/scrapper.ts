@@ -37,7 +37,13 @@ import { ROOT_PATH } from "../utils/constants";
       //TODO:notifying that the repo is not available
     }
 
-    projects.push({ repo, title, repoUrl, url });
+    projects.push({
+      repo,
+      title,
+      repoUrl,
+      url,
+      last_update: new Date().toUTCString(),
+    });
   }
 
   await fs.writeFile(
