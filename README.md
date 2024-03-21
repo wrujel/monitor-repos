@@ -3,7 +3,7 @@
 #### Summary:
 <p><ul>
             <li><span>Number of Repos: 3</span></li>
-            <li><span>Last Update: Thu, 21 Mar 2024 04:21:32 GMT</span></li>
+            <li><span>Last Update: Thu, 21 Mar 2024 12:54:53 GMT</span></li>
             <li><span>Passed: 3</span></li>
             <li><span>Failed: 0</span></li>
           </ul></p>
@@ -21,13 +21,13 @@
             </thead>
             <tbody>
               <tr>
+                                  <td>admin-dashboard-next</td>
+                                  <td>passed ✅</td>
+                                </tr><tr>
                                   <td>movies-search</td>
                                   <td>passed ✅</td>
                                 </tr><tr>
                                   <td>portfolio-web</td>
-                                  <td>passed ✅</td>
-                                </tr><tr>
-                                  <td>admin-dashboard-next</td>
                                   <td>passed ✅</td>
                                 </tr>
             </tbody>
