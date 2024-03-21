@@ -9,6 +9,8 @@ jobs:
   monitor-repos-bot:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    env:
+      ROOT_PATH: ${{ vars.ROOT_PATH }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -18,14 +20,10 @@ jobs:
         run: npm ci
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-      - name: Create environment variables
-        run: |
-          touch .env
-          echo "ROOT_PATH=${{ vars.ROOT_PATH  }}" >> .env
       - name: Update repositories
         run: npm run update-repos
       - name: Run Playwright tests
-        run: npx playwright test --reporter="./tests/reporter.ts"
+        run: npx playwright test --reporter="./tests/reporter.ts -- rootPath=$ROOT_PATH"
       - uses: actions/upload-artifact@v3
         if: always()
         with:
@@ -33,7 +31,7 @@ jobs:
           path: playwright-report/
           retention-days: 30
       - name: Scrapping repositories
-        run: npm run scrapper
+        run: npm run scrapper -- rootPath=$ROOT_PATH"
       - name: Generate new readme
         run: npm run generate-readme
       - name: Commit and push changes
