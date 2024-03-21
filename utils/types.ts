@@ -3,7 +3,6 @@ export type Project = {
   title: string;
   repoUrl: string;
   url: string;
-  last_update: string;
 };
 
 export type RepoStatus = {

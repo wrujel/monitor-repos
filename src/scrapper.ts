@@ -10,21 +10,24 @@ import { ROOT_PATH } from "../utils/constants";
   const context = await browser.newContext();
   const page = await context.newPage();
 
-  const [data] = await Promise.all([
+  const [data, data2] = await Promise.all([
     fs.readFile("./data/report.json", { encoding: "utf-8" }),
+    fs.readFile("./data/projects.json", { encoding: "utf-8" }),
   ]);
   const report = (await JSON.parse(data)).pop();
+  let data_projects = await JSON.parse(data2);
+  console.log(data_projects);
 
   for (const repo of repos) {
     const repoUrl = `${ROOT_PATH}/${repo}`;
 
-    let title,
-      url = "";
+    let title = "";
     for (const x of repo.split("-")) {
       title === "" ? "" : (title += " ");
       title += x.charAt(0).toUpperCase() + x.slice(1);
     }
 
+    let url = "";
     if (report.repos.find((x) => x.repo === repo && x.status === "passed")) {
       await page.goto(repoUrl);
       url = await page
@@ -42,13 +45,17 @@ import { ROOT_PATH } from "../utils/constants";
       title,
       repoUrl,
       url,
-      last_update: new Date().toUTCString(),
     });
   }
 
+  if (data_projects.length > 90) data_projects.shift();
+  data_projects.push({
+    last_update: new Date().toUTCString(),
+    projects,
+  });
   await fs.writeFile(
     "./data/projects.json",
-    JSON.stringify(projects, null, 2),
+    JSON.stringify(data_projects, null, 2),
     { encoding: "utf-8" }
   );
   await browser.close();
