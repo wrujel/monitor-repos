@@ -1,1 +1,1 @@
-export const repos = %repos%
+export const repos = %repos%;
