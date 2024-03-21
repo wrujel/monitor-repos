@@ -23,7 +23,7 @@ jobs:
       - name: Update repositories
         run: npm run update-repos
       - name: Run Playwright tests
-        run: npx playwright test --reporter="./tests/reporter.ts -- rootPath=$ROOT_PATH"
+        run: npx playwright test --reporter="./tests/reporter.ts" -- rootPath="$ROOT_PATH"
       - uses: actions/upload-artifact@v3
         if: always()
         with:
