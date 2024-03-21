@@ -1,0 +1,24 @@
+[
+  {
+    "summary": {
+      "repos_count": 3,
+      "last_update": "Thu, 21 Mar 2024 04:21:32 GMT",
+      "passed": 3,
+      "failed": 0
+    },
+    "repos": [
+      {
+        "repo": "movies-search",
+        "status": "passed"
+      },
+      {
+        "repo": "portfolio-web",
+        "status": "passed"
+      },
+      {
+        "repo": "admin-dashboard-next",
+        "status": "passed"
+      }
+    ]
+  }
+]

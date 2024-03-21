@@ -1,0 +1,20 @@
+{
+  "name": "monitor-repos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "update-repos": "ts-node ./src/update-repos.ts",
+    "scrapper": "ts-node ./src/scrapper.ts",
+    "generate-readme": "ts-node ./src/generate-readme.ts"
+  },
+  "author": "wrujel",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.42.1",
+    "@types/node": "^20.11.20",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.2"
+  }
+}
