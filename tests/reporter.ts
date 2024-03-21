@@ -8,6 +8,7 @@ import type {
 } from "@playwright/test/reporter";
 import { promises as fs } from "fs";
 import { RepoStatus, Summary } from "../utils/types";
+import { ROOT_PATH } from "../utils/constants";
 
 class ProjectsReporter implements Reporter {
   summary: Summary;
@@ -18,6 +19,7 @@ class ProjectsReporter implements Reporter {
   }
 
   onBegin(config: FullConfig<{}, {}>, suite: Suite): void {
+    if (!ROOT_PATH) throw new Error("Path is not defined");
     console.log("Starting test run");
   }
 
