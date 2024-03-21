@@ -2,8 +2,7 @@ import playwright from "playwright";
 import { promises as fs } from "fs";
 import { Project } from "../utils/types";
 import { repos } from "../utils/repos";
-
-const ROOT_PATH = process.argv.slice(2)[0].split("=")[1];
+import { ROOT_PATH } from "../utils/constants";
 
 (async () => {
   const projects: Project[] = [];

@@ -1,7 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { repos } from "../utils/repos";
-
-const ROOT_PATH = process.argv.slice(2)[0].split("=")[1];
+import { ROOT_PATH } from "../utils/constants";
 
 for (const repo of repos) {
   test(`Repo: ${repo}`, async ({ page }) => {

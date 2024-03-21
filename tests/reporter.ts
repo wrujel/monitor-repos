@@ -36,7 +36,6 @@ class ProjectsReporter implements Reporter {
     }
 
     if (!skipped) {
-      console.log({ repo, status });
       this.repos.push({ repo, status });
     }
   }
