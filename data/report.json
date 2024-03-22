@@ -130,5 +130,27 @@
         "status": "passed"
       }
     ]
+  },
+  {
+    "summary": {
+      "repos_count": 3,
+      "last_update": "Fri, 22 Mar 2024 20:06:10 GMT",
+      "passed": 3,
+      "failed": 0
+    },
+    "repos": [
+      {
+        "repo": "admin-dashboard-next",
+        "status": "passed"
+      },
+      {
+        "repo": "movies-search",
+        "status": "passed"
+      },
+      {
+        "repo": "portfolio-web",
+        "status": "passed"
+      }
+    ]
   }
 ]
