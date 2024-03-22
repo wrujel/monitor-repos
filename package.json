@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "dotenv": "^16.4.5",
+    "mailgun-js": "^0.22.0",
     "mongoose": "^8.2.2"
   }
 }

@@ -3,6 +3,23 @@ import { promises as fs } from "fs";
 import { Project } from "../utils/types";
 import { repos } from "../utils/repos";
 import { ROOT_PATH } from "../utils/constants";
+import mailgun from "mailgun-js";
+import dotenv from "dotenv";
+dotenv.config();
+
+const DOMAIN = process.env.MAILGUN_DOMAIN;
+const API_KEY = process.env.MAILGUN_API_KEY;
+
+const generateMessage = (repos: string[]) => {
+  return {
+    from: process.env.FROM_EMAIL,
+    to: process.env.TO_EMAIL,
+    subject: "Monitor Repos - Missing Projects",
+    html: `<p>The following repos are not available:</p><ul>${repos
+      .map((repo) => `<li>${repo}</li>`)
+      .join("")}</ul>`,
+  };
+};
 
 (async () => {
   const projects: Project[] = [];
@@ -16,7 +33,7 @@ import { ROOT_PATH } from "../utils/constants";
   ]);
   const report = (await JSON.parse(data)).pop();
   let data_projects = await JSON.parse(data2);
-  console.log(data_projects);
+  let missing_projects = [];
 
   for (const repo of repos) {
     const repoUrl = `${ROOT_PATH}/${repo}`;
@@ -37,7 +54,7 @@ import { ROOT_PATH } from "../utils/constants";
     }
 
     if (url === "") {
-      //TODO:notifying that the repo is not available
+      missing_projects.push(repo);
     }
 
     projects.push({
@@ -46,6 +63,19 @@ import { ROOT_PATH } from "../utils/constants";
       repoUrl,
       url,
     });
+  }
+
+  if (missing_projects.length > 0) {
+    const mg = mailgun({
+      apiKey: API_KEY,
+      domain: DOMAIN,
+    });
+    const message = generateMessage(missing_projects);
+    try {
+      await mg.messages().send(message);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   if (data_projects.length > 90) data_projects.shift();
