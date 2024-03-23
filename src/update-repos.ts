@@ -6,19 +6,17 @@ dotenv.config();
 
 const MONGO_URI = process.env.MONGO_URI;
 
-const updateRepositories = async () => {
+const getReposFromDB = async (): Promise<String[]> => {
   try {
     if (!MONGO_URI) throw new Error("DB is not defined");
     await mongoose.connect(MONGO_URI);
     await mongoose.connection.db.admin().command({ ping: 1 });
     const repos = await RepoModel.find();
-    let newRepos = [];
+    let newRepos: String[] = [];
     repos.forEach((repo: any) => {
       newRepos.push(repo.name);
     });
-    await fs.writeFile("./data/repos.json", JSON.stringify(newRepos, null, 2), {
-      encoding: "utf-8",
-    });
+    return newRepos;
   } catch (error) {
     console.error(error);
   } finally {
@@ -27,13 +25,27 @@ const updateRepositories = async () => {
 };
 
 (async () => {
-  updateRepositories();
+  const dbRepos = await getReposFromDB();
   const [template, data] = await Promise.all([
     fs.readFile("./templates/repos.ts.tpl", { encoding: "utf-8" }),
     fs.readFile("./data/repos.json", { encoding: "utf-8" }),
   ]);
-  const json = await JSON.parse(data);
+  const repos = await JSON.parse(data);
+  let newRepos = repos;
+  dbRepos.forEach((repo) => {
+    if (!repos.includes(repo)) {
+      newRepos.push(repo);
+    }
+  });
 
-  const newRepos = template.replace("%repos%", JSON.stringify(json));
-  await fs.writeFile("./utils/repos.ts", newRepos, { encoding: "utf-8" });
+  const newReposTemplate = template.replace(
+    "%repos%",
+    JSON.stringify(newRepos)
+  );
+  await fs.writeFile("./utils/repos.ts", newReposTemplate, {
+    encoding: "utf-8",
+  });
+  await fs.writeFile("./data/repos.json", JSON.stringify(newRepos, null, 2), {
+    encoding: "utf-8",
+  });
 })();
