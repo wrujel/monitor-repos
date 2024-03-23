@@ -1,28 +1,5 @@
 import { promises as fs } from "fs";
-import mongoose from "mongoose";
-import dotenv from "dotenv";
-import { RepoModel } from "../utils/repo";
-dotenv.config();
-
-const MONGO_URI = process.env.MONGO_URI;
-
-const getReposFromDB = async (): Promise<String[]> => {
-  try {
-    if (!MONGO_URI) throw new Error("DB is not defined");
-    await mongoose.connect(MONGO_URI);
-    await mongoose.connection.db.admin().command({ ping: 1 });
-    const repos = await RepoModel.find();
-    let newRepos: String[] = [];
-    repos.forEach((repo: any) => {
-      newRepos.push(repo.name);
-    });
-    return newRepos;
-  } catch (error) {
-    console.error(error);
-  } finally {
-    await mongoose.disconnect();
-  }
-};
+import { getReposFromDB } from "update-db";
 
 (async () => {
   const dbRepos = await getReposFromDB();

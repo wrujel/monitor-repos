@@ -23,6 +23,8 @@ jobs:
           touch .env
           echo "${{ secrets.ENV_FILE }}" > .env
           cat .env
+      - name: Update db
+        run: npm run update-db
       - name: Update repositories
         run: npm run update-repos
       - name: Run Playwright tests
