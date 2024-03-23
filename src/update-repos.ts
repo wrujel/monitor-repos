@@ -1,5 +1,5 @@
 import { promises as fs } from "fs";
-import { getReposFromDB } from "./update-db";
+import { getReposFromDB } from "./db";
 
 (async () => {
   const dbRepos = await getReposFromDB();
