@@ -182,5 +182,28 @@
         "url": "https://portfolio-web-wrujel.vercel.app"
       }
     ]
+  },
+  {
+    "last_update": "Sat, 23 Mar 2024 19:07:59 GMT",
+    "projects": [
+      {
+        "repo": "admin-dashboard-next",
+        "title": "Admin Dashboard Next",
+        "repoUrl": "https://github.com/wrujel/admin-dashboard-next",
+        "url": "https://admin-dashboard-next-roan.vercel.app"
+      },
+      {
+        "repo": "movies-search",
+        "title": "Movies Search",
+        "repoUrl": "https://github.com/wrujel/movies-search",
+        "url": "https://movies-search-five.vercel.app"
+      },
+      {
+        "repo": "portfolio-web",
+        "title": "Portfolio Web",
+        "repoUrl": "https://github.com/wrujel/portfolio-web",
+        "url": "https://portfolio-web-wrujel.vercel.app"
+      }
+    ]
   }
 ]
