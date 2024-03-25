@@ -1,17 +1,13 @@
-
----
-### Summary:
+## Summary:
 <p><ul>
             <li><span>Number of Repos: 12</span></li>
-            <li><span>Last Update: Mon, 25 Mar 2024 00:22:15 GMT</span></li>
+            <li><span>Last Update: Mon, 25 Mar 2024 18:19:02 GMT</span></li>
             <li><span>Passed: 12</span></li>
             <li><span>Failed: 0</span></li>
           </ul></p>
   
 
----
-
-### 📝 Repo Statuses:
+## 📝 Repos:
 <table>
             <thead>
               <tr>
