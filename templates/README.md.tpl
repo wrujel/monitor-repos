@@ -1,9 +1,5 @@
-
----
-### Summary:
+## Summary:
 %{{summary}}%
 
----
-
-### 📝 Repo Statuses:
+## 📝 Repos:
 %{{table}}%
