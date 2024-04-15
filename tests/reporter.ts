@@ -25,8 +25,14 @@ class ProjectsReporter implements Reporter {
 
   onTestEnd(test: TestCase, result: TestResult): void {
     const repo = test.title.split(": ")[1];
-    const status = result.status;
+    let status;
     let skipped = false;
+
+    if (result.status === "passed") {
+      status = "active";
+    } else {
+      status = "failed";
+    }
 
     for (const x of this.repos) {
       if (x.repo === repo) {
