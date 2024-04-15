@@ -45,7 +45,7 @@ const generateMessage = (repos: string[]) => {
     }
 
     let url = "";
-    if (report.repos.find((x) => x.repo === repo && x.status === "passed")) {
+    if (report.repos.find((x) => x.repo === repo && x.status === "active")) {
       await page.goto(repoUrl);
       url = await page
         .locator("//a[contains(@title,'https')]")
