@@ -37,7 +37,7 @@ const generateTableHTML = (repos: RepoStatus[], projects: Project[]) => {
                                       .url
                                   }">Link</a></td>
                                   <td>${
-                                    item.status === "passed" ? "✅" : "❌"
+                                    item.status === "active" ? "✅" : "❌"
                                   }</td>
                                 </tr>`
                 )
