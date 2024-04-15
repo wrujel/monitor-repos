@@ -1726,5 +1726,63 @@
         "status": "passed"
       }
     ]
+  },
+  {
+    "summary": {
+      "repos_count": 12,
+      "last_update": "Mon, 15 Apr 2024 21:00:05 GMT",
+      "passed": 0,
+      "failed": 12
+    },
+    "repos": [
+      {
+        "repo": "admin-dashboard-next",
+        "status": "active"
+      },
+      {
+        "repo": "movies-search",
+        "status": "active"
+      },
+      {
+        "repo": "portfolio-web",
+        "status": "active"
+      },
+      {
+        "repo": "airbnb-clone",
+        "status": "active"
+      },
+      {
+        "repo": "clock-app",
+        "status": "active"
+      },
+      {
+        "repo": "django-crud-react",
+        "status": "active"
+      },
+      {
+        "repo": "github-history",
+        "status": "active"
+      },
+      {
+        "repo": "netflix-clone",
+        "status": "active"
+      },
+      {
+        "repo": "rest-api-et",
+        "status": "active"
+      },
+      {
+        "repo": "slider-static",
+        "status": "active"
+      },
+      {
+        "repo": "tesla-landing",
+        "status": "active"
+      },
+      {
+        "repo": "tetris-javascript",
+        "status": "active"
+      }
+    ]
   }
 ]
