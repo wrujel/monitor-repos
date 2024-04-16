@@ -25,13 +25,15 @@ class ProjectsReporter implements Reporter {
 
   onTestEnd(test: TestCase, result: TestResult): void {
     const repo = test.title.split(": ")[1];
-    let status;
+    let status, color;
     let skipped = false;
 
     if (result.status === "passed") {
       status = "active";
+      color = "green";
     } else {
       status = "failed";
+      color = "red";
     }
 
     for (const x of this.repos) {
@@ -44,7 +46,7 @@ class ProjectsReporter implements Reporter {
     }
 
     if (!skipped) {
-      this.repos.push({ repo, status });
+      this.repos.push({ repo, status, color });
     }
   }
 

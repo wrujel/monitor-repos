@@ -8,6 +8,7 @@ export type Project = {
 export type RepoStatus = {
   repo: string;
   status: string;
+  color?: string;
 };
 
 export type Summary = {
