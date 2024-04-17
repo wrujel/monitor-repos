@@ -9,6 +9,7 @@ export type RepoStatus = {
   repo: string;
   status: string;
   color?: string;
+  badge?: RepoBadge;
 };
 
 export type RepoBadge = {
@@ -22,7 +23,6 @@ export type RepoBadge = {
   logoSvg?: string;
   logoColor?: string;
   style?: string;
-  repo: string;
 };
 
 export type Summary = {

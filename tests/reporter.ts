@@ -13,11 +13,9 @@ import { PASSED_STATUS, ROOT_PATH } from "../utils/constants";
 class ProjectsReporter implements Reporter {
   summary: Summary;
   repos: RepoStatus[];
-  repoBadges: RepoBadge[];
 
   constructor() {
     this.repos = [];
-    this.repoBadges = [];
   }
 
   onBegin(config: FullConfig<{}, {}>, suite: Suite): void {
@@ -62,15 +60,14 @@ class ProjectsReporter implements Reporter {
       } else {
         failed++;
       }
-      this.repoBadges.push({
+      repo.badge = {
         schemaVersion: 1,
         label: "status",
         message: repo.status,
         color: repo.color,
         style: "for-the-badge",
         namedLogo: "github",
-        repo: repo.repo,
-      });
+      };
     }
 
     this.summary = {
@@ -99,10 +96,10 @@ class ProjectsReporter implements Reporter {
         encoding: "utf-8",
       });
 
-      for (const badge of this.repoBadges) {
+      for (const repo of this.repos) {
         await fs.writeFile(
-          `./data/${badge.repo}.json`,
-          JSON.stringify(badge, null, 2),
+          `./data/${repo.repo}.json`,
+          JSON.stringify(repo.badge, null, 2),
           { encoding: "utf-8" }
         );
       }
