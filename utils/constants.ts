@@ -11,3 +11,5 @@ export const headers = {
     "user-agent": "node.js",
   },
 };
+
+export const PASSED_STATUS = "active";
