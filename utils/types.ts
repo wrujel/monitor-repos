@@ -11,6 +11,20 @@ export type RepoStatus = {
   color?: string;
 };
 
+export type RepoBadge = {
+  schemaVersion: 1;
+  label: string;
+  message: string;
+  color?: string;
+  labelColor?: string;
+  isError?: boolean;
+  namedLogo?: string;
+  logoSvg?: string;
+  logoColor?: string;
+  style?: string;
+  repo: string;
+};
+
 export type Summary = {
   repos_count: number;
   last_update: string;

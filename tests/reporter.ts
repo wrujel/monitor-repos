@@ -7,15 +7,17 @@ import type {
   FullResult,
 } from "@playwright/test/reporter";
 import { promises as fs } from "fs";
-import { RepoStatus, Summary } from "../utils/types";
-import { ROOT_PATH } from "../utils/constants";
+import { RepoBadge, RepoStatus, Summary } from "../utils/types";
+import { PASSED_STATUS, ROOT_PATH } from "../utils/constants";
 
 class ProjectsReporter implements Reporter {
   summary: Summary;
   repos: RepoStatus[];
+  repoBadges: RepoBadge[];
 
   constructor() {
     this.repos = [];
+    this.repoBadges = [];
   }
 
   onBegin(config: FullConfig<{}, {}>, suite: Suite): void {
@@ -29,7 +31,7 @@ class ProjectsReporter implements Reporter {
     let skipped = false;
 
     if (result.status === "passed") {
-      status = "active";
+      status = PASSED_STATUS;
       color = "green";
     } else {
       status = "failed";
@@ -55,11 +57,20 @@ class ProjectsReporter implements Reporter {
     let failed = 0;
 
     for (const repo of this.repos) {
-      if (repo.status === "passed") {
+      if (repo.status === PASSED_STATUS) {
         passed++;
       } else {
         failed++;
       }
+      this.repoBadges.push({
+        schemaVersion: 1,
+        label: "status",
+        message: repo.status,
+        color: repo.color,
+        style: "for-the-badge",
+        namedLogo: "github",
+        repo: repo.repo,
+      });
     }
 
     this.summary = {
@@ -87,6 +98,14 @@ class ProjectsReporter implements Reporter {
       await fs.writeFile("./data/report.json", JSON.stringify(json, null, 2), {
         encoding: "utf-8",
       });
+
+      for (const badge of this.repoBadges) {
+        await fs.writeFile(
+          `./data/${badge.repo}.json`,
+          JSON.stringify(badge, null, 2),
+          { encoding: "utf-8" }
+        );
+      }
 
       resolve();
     });
