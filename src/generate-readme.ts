@@ -1,5 +1,9 @@
 import { promises as fs } from "fs";
-import { PLACEHOLDER_SUMMARY, PLACEHOLDER_TABLE } from "../utils/constants";
+import {
+  PASSED_STATUS,
+  PLACEHOLDER_SUMMARY,
+  PLACEHOLDER_TABLE,
+} from "../utils/constants";
 import { Project, RepoStatus } from "../utils/types";
 
 const generateSummaryHTML = (summary) => {
@@ -37,7 +41,7 @@ const generateTableHTML = (repos: RepoStatus[], projects: Project[]) => {
                                       .url
                                   }">Link</a></td>
                                   <td>${
-                                    item.status === "active" ? "✅" : "❌"
+                                    item.status === PASSED_STATUS ? "✅" : "❌"
                                   }</td>
                                 </tr>`
                 )

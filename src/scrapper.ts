@@ -2,7 +2,7 @@ import playwright from "playwright";
 import { promises as fs } from "fs";
 import { Project } from "../utils/types";
 import { repos } from "../utils/repos";
-import { ROOT_PATH } from "../utils/constants";
+import { PASSED_STATUS, ROOT_PATH } from "../utils/constants";
 import mailgun from "mailgun-js";
 import dotenv from "dotenv";
 dotenv.config();
@@ -45,7 +45,9 @@ const generateMessage = (repos: string[]) => {
     }
 
     let url = "";
-    if (report.repos.find((x) => x.repo === repo && x.status === "active")) {
+    if (
+      report.repos.find((x) => x.repo === repo && x.status === PASSED_STATUS)
+    ) {
       await page.goto(repoUrl);
       url = await page
         .locator("//a[contains(@title,'https')]")
