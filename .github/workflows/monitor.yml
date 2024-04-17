@@ -70,6 +70,7 @@ jobs:
           git config --local user.name "$USER_NAME"
           git add README.md
           git add data
+          git add utils
           git diff --quiet && git diff --staged --quiet || git commit -m "[bot] Update report"
           git push origin main
         env:
