@@ -1,8 +1,8 @@
 ## Summary:
 <p><ul>
-            <li><span>Number of Repos: 12</span></li>
-            <li><span>Last Update: Fri, 28 Jun 2024 00:21:47 GMT</span></li>
-            <li><span>Passed: 12</span></li>
+            <li><span>Number of Repos: 13</span></li>
+            <li><span>Last Update: Sat, 29 Jun 2024 00:21:26 GMT</span></li>
+            <li><span>Passed: 13</span></li>
             <li><span>Failed: 0</span></li>
           </ul></p>
   
@@ -64,6 +64,10 @@
                                 </tr><tr>
                                   <td><a href="https://github.com/wrujel/tetris-javascript">tetris-javascript</a></td>
                                   <td><a href="https://tetris-javascript-pi.vercel.app">Link</a></td>
+                                  <td>✅</td>
+                                </tr><tr>
+                                  <td><a href="https://github.com/wrujel/webpage-gpt">webpage-gpt</a></td>
+                                  <td><a href="https://webpage-gpt-wrujels-projects.vercel.app/">Link</a></td>
                                   <td>✅</td>
                                 </tr>
             </tbody>
