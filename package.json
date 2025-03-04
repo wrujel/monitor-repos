@@ -8,7 +8,8 @@
     "update-db": "ts-node ./src/update-db.ts",
     "update-repos": "ts-node ./src/update-repos.ts",
     "scrapper": "ts-node ./src/scrapper.ts",
-    "generate-readme": "ts-node ./src/generate-readme.ts"
+    "generate-readme": "ts-node ./src/generate-readme.ts",
+    "update-cron": "ts-node src/update-cron.ts"
   },
   "author": "wrujel",
   "license": "ISC",
