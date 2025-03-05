@@ -63,6 +63,8 @@ jobs:
         run: npm run scrapper
       - name: Generate new readme
         run: npm run generate-readme
+      - name: Update cron
+        run: npm run update-cron
       - name: Commit and push changes
         run: |
           git config --local user.email "$USER_EMAIL"
@@ -72,7 +74,11 @@ jobs:
           git add utils
           git add .github
           git diff --quiet && git diff --staged --quiet || git commit -m "[bot] Update report"
-          git push origin main
         env:
           USER_EMAIL: ${{ vars.USER_EMAIL }}
           USER_NAME: ${{ vars.USER_NAME }}
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
