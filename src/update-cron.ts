@@ -34,7 +34,10 @@ const readFiles = async (dirname, updateCron, onError) => {
 };
 
 (async () => {
-  const data = await fs.readFile("./data/last-update.json", "utf-8");
+  const data = await fs.readFile(
+    "./.github/workflows/last-update.json",
+    "utf-8"
+  );
   const lastUpdate = await JSON.parse(data);
   if (
     !lastUpdate.date ||
@@ -45,7 +48,7 @@ const readFiles = async (dirname, updateCron, onError) => {
       Math.floor(Math.random() * 3)
     ];
     await fs.writeFile(
-      "./data/last-update.json",
+      "./.github/workflows/last-update.json",
       JSON.stringify({ date: new Date(), lastCount: count }, null, 2),
       {
         encoding: "utf-8",
