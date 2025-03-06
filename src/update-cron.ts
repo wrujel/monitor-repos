@@ -7,7 +7,7 @@ const updateCron = async (filename, content) => {
   let newLines = [];
   for (const line of lines) {
     if (line.includes("cron:")) {
-      const newCron = `cron: "* */${count} * * *"`;
+      const newCron = `cron: "0 */${count} * * *"`;
       newLines.push(line.replace(/cron:.*$/, newCron));
     } else {
       newLines.push(line);
