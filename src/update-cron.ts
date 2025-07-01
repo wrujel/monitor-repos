@@ -44,7 +44,7 @@ const readFiles = async (dirname, updateCron, onError) => {
     new Date().getTime() - new Date(lastUpdate.date).getTime() >
       1000 * 60 * 60 * 24
   ) {
-    count = [4, 6, 8, 12].filter((v) => v !== lastUpdate.lastCount)[
+    count = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23].filter((v) => v !== lastUpdate.lastCount)[
       Math.floor(Math.random() * 3)
     ];
     await fs.writeFile(
