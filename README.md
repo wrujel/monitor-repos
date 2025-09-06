@@ -1,7 +1,7 @@
 ## Summary:
 <p><ul>
             <li><span>Number of Repos: 13</span></li>
-            <li><span>Last Update: Sat, 06 Sep 2025 04:02:33 GMT</span></li>
+            <li><span>Last Update: Sat, 06 Sep 2025 06:03:48 GMT</span></li>
             <li><span>Passed: 13</span></li>
             <li><span>Failed: 0</span></li>
           </ul></p>
@@ -47,7 +47,7 @@
                                   <td>✅</td>
                                 </tr><tr>
                                   <td><a href="https://github.com/wrujel/netflix-clone">netflix-clone</a></td>
-                                  <td><a href="https://movies-app-wrujel.vercel.app">Link</a></td>
+                                  <td><a href="https://movies-app-o2ff-git-main-wrujels-projects.vercel.app">Link</a></td>
                                   <td>✅</td>
                                 </tr><tr>
                                   <td><a href="https://github.com/wrujel/rest-api-et">rest-api-et</a></td>
