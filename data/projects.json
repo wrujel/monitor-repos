@@ -1,94 +1,5 @@
 [
   {
-    "last_update": "Sat, 11 Oct 2025 03:16:18 GMT",
-    "projects": [
-      {
-        "repo": "admin-dashboard-next",
-        "title": "Admin Dashboard Next",
-        "repoUrl": "https://github.com/wrujel/admin-dashboard-next",
-        "url": "https://admin-dashboard-next-roan.vercel.app"
-      },
-      {
-        "repo": "movies-search",
-        "title": "Movies Search",
-        "repoUrl": "https://github.com/wrujel/movies-search",
-        "url": "https://movies-search-five.vercel.app"
-      },
-      {
-        "repo": "portfolio-web",
-        "title": "Portfolio Web",
-        "repoUrl": "https://github.com/wrujel/portfolio-web",
-        "url": "https://portfolio-web-wrujel.vercel.app"
-      },
-      {
-        "repo": "airbnb-clone",
-        "title": "Airbnb Clone",
-        "repoUrl": "https://github.com/wrujel/airbnb-clone",
-        "url": "https://rental-app-delta.vercel.app"
-      },
-      {
-        "repo": "clock-app",
-        "title": "Clock App",
-        "repoUrl": "https://github.com/wrujel/clock-app",
-        "url": "https://clock-app-wrujel.vercel.app"
-      },
-      {
-        "repo": "django-crud-react",
-        "title": "Django Crud React",
-        "repoUrl": "https://github.com/wrujel/django-crud-react",
-        "url": "https://django-crud-react.onrender.com"
-      },
-      {
-        "repo": "github-history",
-        "title": "Github History",
-        "repoUrl": "https://github.com/wrujel/github-history",
-        "url": "https://github-history.vercel.app"
-      },
-      {
-        "repo": "netflix-clone",
-        "title": "Netflix Clone",
-        "repoUrl": "https://github.com/wrujel/netflix-clone",
-        "url": "https://movies-app-o2ff-git-main-wrujels-projects.vercel.app"
-      },
-      {
-        "repo": "rest-api-et",
-        "title": "Rest Api Et",
-        "repoUrl": "https://github.com/wrujel/rest-api-et",
-        "url": "https://rest-api-et.onrender.com"
-      },
-      {
-        "repo": "slider-static",
-        "title": "Slider Static",
-        "repoUrl": "https://github.com/wrujel/slider-static",
-        "url": "https://ephemeral-zuccutto-49ec06.netlify.app"
-      },
-      {
-        "repo": "tesla-landing",
-        "title": "Tesla Landing",
-        "repoUrl": "https://github.com/wrujel/tesla-landing",
-        "url": "https://sage-daffodil-4904c3.netlify.app"
-      },
-      {
-        "repo": "tetris-javascript",
-        "title": "Tetris Javascript",
-        "repoUrl": "https://github.com/wrujel/tetris-javascript",
-        "url": "https://tetris-javascript-pi.vercel.app"
-      },
-      {
-        "repo": "webpage-gpt",
-        "title": "Webpage Gpt",
-        "repoUrl": "https://github.com/wrujel/webpage-gpt",
-        "url": "https://webpage-gpt-wrujels-projects.vercel.app/"
-      },
-      {
-        "repo": "portfolio-web-template",
-        "title": "Portfolio Web Template",
-        "repoUrl": "https://github.com/wrujel/portfolio-web-template",
-        "url": "https://portfolio-web-wrujel.vercel.app"
-      }
-    ]
-  },
-  {
     "last_update": "Sat, 11 Oct 2025 04:11:14 GMT",
     "projects": [
       {
@@ -8011,6 +7922,95 @@
   },
   {
     "last_update": "Fri, 17 Oct 2025 02:40:04 GMT",
+    "projects": [
+      {
+        "repo": "admin-dashboard-next",
+        "title": "Admin Dashboard Next",
+        "repoUrl": "https://github.com/wrujel/admin-dashboard-next",
+        "url": "https://admin-dashboard-next-roan.vercel.app"
+      },
+      {
+        "repo": "movies-search",
+        "title": "Movies Search",
+        "repoUrl": "https://github.com/wrujel/movies-search",
+        "url": "https://movies-search-five.vercel.app"
+      },
+      {
+        "repo": "portfolio-web",
+        "title": "Portfolio Web",
+        "repoUrl": "https://github.com/wrujel/portfolio-web",
+        "url": "https://portfolio-web-wrujel.vercel.app"
+      },
+      {
+        "repo": "airbnb-clone",
+        "title": "Airbnb Clone",
+        "repoUrl": "https://github.com/wrujel/airbnb-clone",
+        "url": "https://rental-app-delta.vercel.app"
+      },
+      {
+        "repo": "clock-app",
+        "title": "Clock App",
+        "repoUrl": "https://github.com/wrujel/clock-app",
+        "url": "https://clock-app-wrujel.vercel.app"
+      },
+      {
+        "repo": "django-crud-react",
+        "title": "Django Crud React",
+        "repoUrl": "https://github.com/wrujel/django-crud-react",
+        "url": "https://django-crud-react.onrender.com"
+      },
+      {
+        "repo": "github-history",
+        "title": "Github History",
+        "repoUrl": "https://github.com/wrujel/github-history",
+        "url": "https://github-history.vercel.app"
+      },
+      {
+        "repo": "netflix-clone",
+        "title": "Netflix Clone",
+        "repoUrl": "https://github.com/wrujel/netflix-clone",
+        "url": "https://movies-app-o2ff-git-main-wrujels-projects.vercel.app"
+      },
+      {
+        "repo": "rest-api-et",
+        "title": "Rest Api Et",
+        "repoUrl": "https://github.com/wrujel/rest-api-et",
+        "url": "https://rest-api-et.onrender.com"
+      },
+      {
+        "repo": "slider-static",
+        "title": "Slider Static",
+        "repoUrl": "https://github.com/wrujel/slider-static",
+        "url": "https://ephemeral-zuccutto-49ec06.netlify.app"
+      },
+      {
+        "repo": "tesla-landing",
+        "title": "Tesla Landing",
+        "repoUrl": "https://github.com/wrujel/tesla-landing",
+        "url": "https://sage-daffodil-4904c3.netlify.app"
+      },
+      {
+        "repo": "tetris-javascript",
+        "title": "Tetris Javascript",
+        "repoUrl": "https://github.com/wrujel/tetris-javascript",
+        "url": "https://tetris-javascript-pi.vercel.app"
+      },
+      {
+        "repo": "webpage-gpt",
+        "title": "Webpage Gpt",
+        "repoUrl": "https://github.com/wrujel/webpage-gpt",
+        "url": "https://webpage-gpt-wrujels-projects.vercel.app/"
+      },
+      {
+        "repo": "portfolio-web-template",
+        "title": "Portfolio Web Template",
+        "repoUrl": "https://github.com/wrujel/portfolio-web-template",
+        "url": "https://portfolio-web-wrujel.vercel.app"
+      }
+    ]
+  },
+  {
+    "last_update": "Fri, 17 Oct 2025 04:09:44 GMT",
     "projects": [
       {
         "repo": "admin-dashboard-next",
