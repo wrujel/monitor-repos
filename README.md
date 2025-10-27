@@ -1,7 +1,7 @@
 ## Summary:
 <p><ul>
             <li><span>Number of Repos: 14</span></li>
-            <li><span>Last Update: Mon, 27 Oct 2025 01:31:50 GMT</span></li>
+            <li><span>Last Update: Mon, 27 Oct 2025 02:36:00 GMT</span></li>
             <li><span>Passed: 14</span></li>
             <li><span>Failed: 0</span></li>
           </ul></p>
@@ -24,10 +24,6 @@
                                 </tr><tr>
                                   <td><a href="https://github.com/wrujel/movies-search">movies-search</a></td>
                                   <td><a href="https://movies-search-five.vercel.app">Link</a></td>
-                                  <td>✅</td>
-                                </tr><tr>
-                                  <td><a href="https://github.com/wrujel/portfolio-web">portfolio-web</a></td>
-                                  <td><a href="https://portfolio-web-wrujel.vercel.app">Link</a></td>
                                   <td>✅</td>
                                 </tr><tr>
                                   <td><a href="https://github.com/wrujel/airbnb-clone">airbnb-clone</a></td>
@@ -71,6 +67,10 @@
                                   <td>✅</td>
                                 </tr><tr>
                                   <td><a href="https://github.com/wrujel/portfolio-web-template">portfolio-web-template</a></td>
+                                  <td><a href="https://portfolio-web-wrujel.vercel.app">Link</a></td>
+                                  <td>✅</td>
+                                </tr><tr>
+                                  <td><a href="https://github.com/wrujel/portfolio-web">portfolio-web</a></td>
                                   <td><a href="https://portfolio-web-wrujel.vercel.app">Link</a></td>
                                   <td>✅</td>
                                 </tr>
