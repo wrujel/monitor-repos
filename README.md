@@ -1,8 +1,8 @@
 ## Summary:
 <p><ul>
-            <li><span>Number of Repos: 14</span></li>
-            <li><span>Last Update: Tue, 28 Oct 2025 00:09:07 GMT</span></li>
-            <li><span>Passed: 14</span></li>
+            <li><span>Number of Repos: 13</span></li>
+            <li><span>Last Update: Tue, 28 Oct 2025 02:31:42 GMT</span></li>
+            <li><span>Passed: 13</span></li>
             <li><span>Failed: 0</span></li>
           </ul></p>
   
@@ -67,10 +67,6 @@
                                   <td>✅</td>
                                 </tr><tr>
                                   <td><a href="https://github.com/wrujel/portfolio-web-template">portfolio-web-template</a></td>
-                                  <td><a href="https://portfolio-web-wrujel.vercel.app">Link</a></td>
-                                  <td>✅</td>
-                                </tr><tr>
-                                  <td><a href="https://github.com/wrujel/portfolio-web">portfolio-web</a></td>
                                   <td><a href="https://portfolio-web-wrujel.vercel.app">Link</a></td>
                                   <td>✅</td>
                                 </tr>
