@@ -2,6 +2,11 @@ import { promises as fs } from "fs";
 
 let count = 4;
 
+// Función para calcular el intervalo en minutos basado en ejecuciones deseadas por día
+const getIntervalFromExecutionsPerDay = (executionsPerDay: number): number => {
+  return Math.floor((24 * 60) / executionsPerDay);
+};
+
 const updateCron = async (filename, content) => {
   const lines = content.split(/[\r\n]+/g);
   let newLines = [];
@@ -44,12 +49,44 @@ const readFiles = async (dirname, updateCron, onError) => {
     new Date().getTime() - new Date(lastUpdate.date).getTime() >
       1000 * 60 * 60 * 24
   ) {
-    count = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23].filter((v) => v !== lastUpdate.lastCount)[
-      Math.floor(Math.random() * 3)
+    // Definir diferentes rangos de ejecuciones por día para mayor varianza
+    const executionRanges = [
+      { min: 5, max: 15 }, // Baja frecuencia: 5-15 ejecuciones/día
+      { min: 15, max: 30 }, // Media frecuencia: 15-30 ejecuciones/día
+      { min: 30, max: 48 }, // Alta frecuencia: 30-48 ejecuciones/día
     ];
+
+    // Seleccionar aleatoriamente un rango
+    const selectedRange =
+      executionRanges[Math.floor(Math.random() * executionRanges.length)];
+
+    // Calcular número aleatorio de ejecuciones dentro del rango seleccionado
+    const executionsPerDay = Math.floor(
+      Math.random() * (selectedRange.max - selectedRange.min + 1) +
+        selectedRange.min
+    );
+
+    // Convertir a intervalo en minutos
+    count = getIntervalFromExecutionsPerDay(executionsPerDay);
+
+    // Asegurar que el intervalo esté entre 1 y 1440 (máximo de minutos en un día)
+    count = Math.max(1, Math.min(1440, count));
+
+    console.log(
+      `Configurando ${executionsPerDay} ejecuciones por día (cada ${count} minutos)`
+    );
+
     await fs.writeFile(
       "./.github/workflows/last-update.json",
-      JSON.stringify({ date: new Date(), lastCount: count }, null, 2),
+      JSON.stringify(
+        {
+          date: new Date(),
+          lastCount: count,
+          executionsPerDay: executionsPerDay,
+        },
+        null,
+        2
+      ),
       {
         encoding: "utf-8",
       }
