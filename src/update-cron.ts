@@ -7,12 +7,20 @@ const getIntervalFromExecutionsPerDay = (executionsPerDay: number): number => {
   return Math.floor((24 * 60) / executionsPerDay);
 };
 
-const updateCron = async (filename, content) => {
+const updateCron = async (filename: string, content: string) => {
   const lines = content.split(/[\r\n]+/g);
   let newLines = [];
   for (const line of lines) {
     if (line.includes("cron:")) {
-      const newCron = `cron: "0 */${count} * * *"`;
+      let newCron: string;
+      if (count >= 60) {
+        // For intervals >= 60 minutes, use hour-based scheduling
+        const hours = Math.floor(count / 60);
+        newCron = `cron: "0 */${hours} * * *"`;
+      } else {
+        // For intervals < 60 minutes, use minute-based scheduling
+        newCron = `cron: "*/${count} * * * *"`;
+      }
       newLines.push(line.replace(/cron:.*$/, newCron));
     } else {
       newLines.push(line);
@@ -22,7 +30,11 @@ const updateCron = async (filename, content) => {
   await fs.writeFile(`./.github/workflows/${filename}`, newContent);
 };
 
-const readFiles = async (dirname, updateCron, onError) => {
+const readFiles = async (
+  dirname: string,
+  updateCron: (filename: string, content: string) => Promise<void>,
+  onError: (err: Error) => void
+) => {
   try {
     const filenames = await fs.readdir(dirname);
     for (const filename of filenames) {
