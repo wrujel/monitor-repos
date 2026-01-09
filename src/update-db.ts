@@ -14,11 +14,11 @@ const isValueObject = (value: any) => {
 
 (async () => {
   const rawData = await fetch(GITHUB_REPOS, headers);
-  const data = await rawData.json();
+  const data = (await rawData.json()) as any[];
   let processedData: IRepository[] = [];
   const repoObject = new Repository();
   for (const repo of data) {
-    let newRepo: IRepository;
+    let newRepo: Partial<IRepository> = {};
     for (const key in repo) {
       if (Object.keys(repoObject).includes(key) && !isValueObject(repo[key])) {
         newRepo = {
@@ -27,8 +27,8 @@ const isValueObject = (value: any) => {
         };
       }
     }
-    if (newRepo?.topics.includes(GITHUB_TAG)) {
-      processedData.push(newRepo);
+    if (newRepo?.topics?.includes(GITHUB_TAG)) {
+      processedData.push(newRepo as IRepository);
     }
   }
 
