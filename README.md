@@ -1,9 +1,9 @@
 ## Summary:
 <p><ul>
             <li><span>Number of Repos: 13</span></li>
-            <li><span>Last Update: Wed, 04 Feb 2026 13:21:22 GMT</span></li>
-            <li><span>Passed: 12</span></li>
-            <li><span>Failed: 1</span></li>
+            <li><span>Last Update: Wed, 04 Feb 2026 14:11:54 GMT</span></li>
+            <li><span>Passed: 13</span></li>
+            <li><span>Failed: 0</span></li>
           </ul></p>
   
 
@@ -27,8 +27,8 @@
                                   <td>✅</td>
                                 </tr><tr>
                                   <td><a href="https://github.com/wrujel/airbnb-clone">airbnb-clone</a></td>
-                                  <td><a href="">Link</a></td>
-                                  <td>❌</td>
+                                  <td><a href="https://demo-airbnb-clone-three-phi-45.vercel.app/">Link</a></td>
+                                  <td>✅</td>
                                 </tr><tr>
                                   <td><a href="https://github.com/wrujel/clock-app">clock-app</a></td>
                                   <td><a href="https://clock-app-wrujel.vercel.app">Link</a></td>
