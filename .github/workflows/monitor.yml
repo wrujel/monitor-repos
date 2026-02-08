@@ -1,7 +1,7 @@
 name: Monitor Repos
 on:
   schedule:
-    - cron: "*/36 * * * *"
+    - cron: "*/57 * * * *"
   workflow_dispatch:
 jobs:
   run-tests:
