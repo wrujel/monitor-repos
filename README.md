@@ -1,9 +1,9 @@
 ## Summary:
 <p><ul>
             <li><span>Number of Repos: 13</span></li>
-            <li><span>Last Update: Sun, 22 Feb 2026 03:03:44 GMT</span></li>
-            <li><span>Passed: 13</span></li>
-            <li><span>Failed: 0</span></li>
+            <li><span>Last Update: Sun, 22 Feb 2026 04:21:36 GMT</span></li>
+            <li><span>Passed: 12</span></li>
+            <li><span>Failed: 1</span></li>
           </ul></p>
   
 
@@ -63,8 +63,8 @@
                                   <td>✅</td>
                                 </tr><tr>
                                   <td><a href="https://github.com/wrujel/webpage-gpt">webpage-gpt</a></td>
-                                  <td><a href="https://webpage-gpt-wrujels-projects.vercel.app/">Link</a></td>
-                                  <td>✅</td>
+                                  <td><a href="">Link</a></td>
+                                  <td>❌</td>
                                 </tr><tr>
                                   <td><a href="https://github.com/wrujel/portfolio-web-template">portfolio-web-template</a></td>
                                   <td><a href="https://portfolio-web-wrujel.vercel.app">Link</a></td>
