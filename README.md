@@ -1,9 +1,9 @@
 ## Summary:
 <p><ul>
             <li><span>Number of Repos: 13</span></li>
-            <li><span>Last Update: Sat, 28 Feb 2026 07:11:23 GMT</span></li>
-            <li><span>Passed: 13</span></li>
-            <li><span>Failed: 0</span></li>
+            <li><span>Last Update: Sat, 28 Feb 2026 07:49:31 GMT</span></li>
+            <li><span>Passed: 12</span></li>
+            <li><span>Failed: 1</span></li>
           </ul></p>
   
 
@@ -47,8 +47,8 @@
                                   <td>✅</td>
                                 </tr><tr>
                                   <td><a href="https://github.com/wrujel/rest-api-et">rest-api-et</a></td>
-                                  <td><a href="https://rest-api-et.onrender.com">Link</a></td>
-                                  <td>✅</td>
+                                  <td><a href="">Link</a></td>
+                                  <td>❌</td>
                                 </tr><tr>
                                   <td><a href="https://github.com/wrujel/slider-static">slider-static</a></td>
                                   <td><a href="https://ephemeral-zuccutto-49ec06.netlify.app">Link</a></td>
