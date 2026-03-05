@@ -6,7 +6,7 @@ for (const repo of repos) {
   test(`Repo: ${repo}`, async ({ page }) => {
     await page.goto(`${ROOT_PATH}/${repo}`);
     await expect(
-      page.locator("(//a[contains(@title,'https')])[2]")
+      page.locator("(//a[contains(@title,'https')])[1]"),
     ).toBeVisible();
   });
 }
