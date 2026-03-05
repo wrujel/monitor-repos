@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "label": "status",
-  "message": "failed",
-  "color": "red",
+  "message": "active",
+  "color": "green",
   "style": "for-the-badge",
   "namedLogo": "github"
 }
