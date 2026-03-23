@@ -1,9 +1,9 @@
 ## Summary:
 <p><ul>
             <li><span>Number of Repos: 13</span></li>
-            <li><span>Last Update: Mon, 23 Mar 2026 08:17:06 GMT</span></li>
-            <li><span>Passed: 13</span></li>
-            <li><span>Failed: 0</span></li>
+            <li><span>Last Update: Mon, 23 Mar 2026 09:20:39 GMT</span></li>
+            <li><span>Passed: 12</span></li>
+            <li><span>Failed: 1</span></li>
           </ul></p>
   
 
@@ -55,8 +55,8 @@
                                   <td>✅</td>
                                 </tr><tr>
                                   <td><a href="https://github.com/wrujel/tesla-landing">tesla-landing</a></td>
-                                  <td><a href="https://sage-daffodil-4904c3.netlify.app">Link</a></td>
-                                  <td>✅</td>
+                                  <td><a href="">Link</a></td>
+                                  <td>❌</td>
                                 </tr><tr>
                                   <td><a href="https://github.com/wrujel/tetris-javascript">tetris-javascript</a></td>
                                   <td><a href="https://tetris-javascript-pi.vercel.app">Link</a></td>
