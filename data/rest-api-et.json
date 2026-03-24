@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "label": "status",
   "message": "active",
-  "color": "green",
+  "color": "red",
   "style": "for-the-badge",
   "namedLogo": "github"
 }
