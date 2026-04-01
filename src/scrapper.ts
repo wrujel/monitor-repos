@@ -49,10 +49,16 @@ const generateMessage = (repos: string[]) => {
       report.repos.find((x) => x.repo === repo && x.status === PASSED_STATUS)
     ) {
       await page.goto(repoUrl);
-      url = await page
-        .locator("//a[contains(@title,'https')]")
-        .first()
-        .getAttribute("href");
+      for (let attempt = 0; attempt < 5; attempt++) {
+        url = await page
+          .locator("//a[contains(@title,'https')]")
+          .first()
+          .getAttribute("href", { timeout: 5000 })
+          .catch(() => "");
+        if (url) break;
+        await new Promise((r) => setTimeout(r, 1000 * 2 ** attempt));
+        await page.reload();
+      }
     }
 
     if (url === "") {
@@ -65,6 +71,8 @@ const generateMessage = (repos: string[]) => {
       repoUrl,
       url,
     });
+
+    await new Promise((r) => setTimeout(r, 5000));
   }
 
   if (missing_projects.length > 0) {
@@ -88,7 +96,7 @@ const generateMessage = (repos: string[]) => {
   await fs.writeFile(
     "./data/projects.json",
     JSON.stringify(data_projects, null, 2),
-    { encoding: "utf-8" }
+    { encoding: "utf-8" },
   );
   await browser.close();
 })();
