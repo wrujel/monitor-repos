@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "label": "deploy",
-  "message": "building",
-  "color": "yellow",
+  "message": "passing",
+  "color": "brightgreen",
   "style": "for-the-badge",
   "namedLogo": "vercel"
 }
