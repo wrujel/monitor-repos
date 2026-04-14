@@ -2,6 +2,8 @@ import { getReposFromDB, createRepo, updateRepo } from "./db";
 import { headers } from "../utils/constants";
 import { Repository } from "../utils/models";
 import { IRepository } from "../utils/types";
+import { promises as fs } from "fs";
+import path from "path";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -38,6 +40,21 @@ const isValueObject = (value: any) => {
       await createRepo(repo);
     } else {
       await updateRepo(repo);
+    }
+  }
+
+  // Process private repos from data/private/ (skip scrapper, exclude -deploy files)
+  const privateFiles = await fs.readdir("./data/private");
+  const privateRepoNames = privateFiles
+    .filter((f) => f.endsWith(".json") && !f.includes("-deploy"))
+    .map((f) => path.basename(f, ".json"));
+
+  for (const name of privateRepoNames) {
+    const privateRepo = { name, private: true } as Partial<IRepository>;
+    if (!dbRepos.includes(name)) {
+      await createRepo(privateRepo as IRepository);
+    } else {
+      await updateRepo(privateRepo as IRepository);
     }
   }
 })();

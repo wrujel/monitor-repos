@@ -32,6 +32,22 @@ export const getReposFromDB = async (): Promise<String[]> => {
   }
 };
 
+export const getPublicReposFromDB = async (): Promise<String[]> => {
+  try {
+    await connectToDB();
+    const repos = await RepoModel.find({ private: false });
+    let newRepos: String[] = [];
+    repos.forEach((repo: any) => {
+      newRepos.push(repo.name);
+    });
+    return newRepos;
+  } catch (error) {
+    console.error(error);
+  } finally {
+    await mongoose.disconnect();
+  }
+};
+
 export const createRepo = async (repo: IRepository) => {
   try {
     await connectToDB();

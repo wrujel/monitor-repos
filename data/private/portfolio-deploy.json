@@ -4,5 +4,6 @@
   "message": "passing",
   "color": "brightgreen",
   "style": "for-the-badge",
+  "url": "https://wrujel.com",
   "namedLogo": "vercel"
 }
