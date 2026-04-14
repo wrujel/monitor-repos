@@ -1,4 +1,4 @@
-import { getReposFromDB, createRepo, updateRepo } from "./db";
+import { getReposFromDB, createRepo, updateRepo, disconnectFromDB } from "./db";
 import { headers } from "../utils/constants";
 import { Repository } from "../utils/models";
 import { IRepository } from "../utils/types";
@@ -57,4 +57,5 @@ const isValueObject = (value: any) => {
       await updateRepo(privateRepo as IRepository);
     }
   }
+  await disconnectFromDB();
 })();

@@ -11,7 +11,13 @@ const MONGO_URI = process.env.MONGO_URI;
 
 const connectToDB = async () => {
   if (!MONGO_URI) throw new Error("DB is not defined");
-  await mongoose.connect(MONGO_URI, { family: 4 });
+  if (mongoose.connection.readyState === 0) {
+    await mongoose.connect(MONGO_URI, { family: 4 });
+  }
+};
+
+export const disconnectFromDB = async () => {
+  await mongoose.disconnect();
 };
 
 export const getReposFromDB = async (): Promise<String[]> => {
@@ -26,8 +32,6 @@ export const getReposFromDB = async (): Promise<String[]> => {
   } catch (error) {
     console.error(error);
     return [];
-  } finally {
-    await mongoose.disconnect();
   }
 };
 
@@ -43,8 +47,6 @@ export const getPublicReposFromDB = async (): Promise<String[]> => {
   } catch (error) {
     console.error(error);
     return [];
-  } finally {
-    await mongoose.disconnect();
   }
 };
 
@@ -54,8 +56,6 @@ export const createRepo = async (repo: IRepository) => {
     await RepoModel.create(repo);
   } catch (error) {
     console.error(error);
-  } finally {
-    await mongoose.disconnect();
   }
 };
 
@@ -65,7 +65,5 @@ export const updateRepo = async (repo: IRepository) => {
     await RepoModel.findOneAndUpdate({ name: repo.name }, repo);
   } catch (error) {
     console.error(error);
-  } finally {
-    await mongoose.disconnect();
   }
 };

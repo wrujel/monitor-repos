@@ -1,5 +1,5 @@
 import { promises as fs } from "fs";
-import { getReposFromDB, getPublicReposFromDB } from "./db";
+import { getReposFromDB, getPublicReposFromDB, disconnectFromDB } from "./db";
 
 (async () => {
   const [dbRepos, dbPublicRepos] = await Promise.all([
@@ -31,4 +31,5 @@ import { getReposFromDB, getPublicReposFromDB } from "./db";
   await fs.writeFile("./data/repos.json", JSON.stringify(newRepos, null, 2), {
     encoding: "utf-8",
   });
+  await disconnectFromDB();
 })();
