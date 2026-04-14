@@ -1,19 +1,17 @@
 import mongoose from "mongoose";
+import dns from "dns";
 import { RepoModel } from "../utils/models";
 import { IRepository } from "../utils/types";
 import dotenv from "dotenv";
 dotenv.config();
 
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
+
 const MONGO_URI = process.env.MONGO_URI;
 
 const connectToDB = async () => {
-  try {
-    if (!MONGO_URI) throw new Error("DB is not defined");
-    await mongoose.connect(MONGO_URI);
-    await mongoose.connection.db.admin().command({ ping: 1 });
-  } catch (error) {
-    console.error(error);
-  }
+  if (!MONGO_URI) throw new Error("DB is not defined");
+  await mongoose.connect(MONGO_URI, { family: 4 });
 };
 
 export const getReposFromDB = async (): Promise<String[]> => {
@@ -27,6 +25,7 @@ export const getReposFromDB = async (): Promise<String[]> => {
     return newRepos;
   } catch (error) {
     console.error(error);
+    return [];
   } finally {
     await mongoose.disconnect();
   }
@@ -43,6 +42,7 @@ export const getPublicReposFromDB = async (): Promise<String[]> => {
     return newRepos;
   } catch (error) {
     console.error(error);
+    return [];
   } finally {
     await mongoose.disconnect();
   }
