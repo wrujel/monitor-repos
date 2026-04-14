@@ -46,7 +46,7 @@ const isValueObject = (value: any) => {
   // Process private repos from data/private/ (skip scrapper, exclude -deploy files)
   const privateFiles = await fs.readdir("./data/private");
   const privateRepoNames = privateFiles
-    .filter((f) => f.endsWith(".json") && !f.includes("-deploy"))
+    .filter((f) => f.endsWith(".json") && !f.includes("_deploy"))
     .map((f) => path.basename(f, ".json"));
 
   for (const name of privateRepoNames) {
