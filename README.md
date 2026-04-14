@@ -1,7 +1,7 @@
 ## Summary:
 <p><ul>
             <li><span>Number of Repos: 15</span></li>
-            <li><span>Last Update: Tue, 14 Apr 2026 01:39:59 GMT</span></li>
+            <li><span>Last Update: Tue, 14 Apr 2026 03:11:40 GMT</span></li>
             <li><span>Passed: 15</span></li>
             <li><span>Failed: 0</span></li>
           </ul></p>
@@ -71,7 +71,7 @@
                                   <td>✅</td>
                                 </tr><tr>
                                   <td>portfolio</td>
-                                  <td><a href="https://wrujel.com">Link</a></td>
+                                  <td></td>
                                   <td>✅</td>
                                 </tr><tr>
                                   <td>portfolio_deploy</td>
