@@ -37,17 +37,30 @@ for (const project of projects) {
     // Total test budget covers all attempts + exponential backoffs between them
     test.setTimeout(timeout * retries + totalBackoffMs(retries));
 
+    console.log(`[debug] Starting test for: ${project.repo} → ${project.url}`);
+    console.log(`[debug] timeout=${timeout}ms, retries=${retries}`);
+
     let lastError: Error | undefined;
     for (let attempt = 1; attempt <= retries; attempt++) {
       try {
+        console.log(
+          `[debug] [${project.repo}] Attempt ${attempt}/${retries} — navigating...`,
+        );
         const response = await page.goto(project.url, {
           timeout,
           waitUntil: "load",
         });
+        console.log(
+          `[debug] [${project.repo}] Response status: ${response?.status()}`,
+        );
         expect(response?.ok()).toBeTruthy();
+        console.log(`[debug] [${project.repo}] PASSED`);
         return;
       } catch (e) {
         lastError = e as Error;
+        console.log(
+          `[debug] [${project.repo}] Attempt ${attempt}/${retries} threw: ${lastError.message}`,
+        );
         if (attempt < retries) {
           const delay = exponentialBackoffMs(attempt);
           console.log(
@@ -57,6 +70,7 @@ for (const project of projects) {
         }
       }
     }
+    console.log(`[debug] [${project.repo}] FAILED after ${retries} attempt(s)`);
     throw lastError;
   });
 }

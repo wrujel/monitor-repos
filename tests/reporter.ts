@@ -26,6 +26,7 @@ class ProjectsReporter implements Reporter {
 
   onBegin(config: FullConfig<{}, {}>, suite: Suite): void {
     console.log("Starting test run");
+    console.log(`[debug] Total test suites: ${suite.allTests().length}`);
   }
 
   onTestEnd(test: TestCase, result: TestResult): void {
@@ -41,6 +42,13 @@ class ProjectsReporter implements Reporter {
       color = "red";
     }
 
+    console.log(
+      `[debug] Test ended: ${repo} → ${result.status} (duration: ${result.duration}ms)`,
+    );
+    if (result.status !== "passed" && result.error) {
+      console.log(`[debug] Error for ${repo}: ${result.error.message}`);
+    }
+
     const existing = this.repos.find((x) => x.repo === repo);
     if (existing) {
       existing.status = status;
@@ -51,7 +59,7 @@ class ProjectsReporter implements Reporter {
   }
 
   onEnd(result: FullResult) {
-    console.log("Test run finished");
+    console.log(`Test run finished with status: ${result.status}`);
   }
 
   async onExit(): Promise<void> {
@@ -62,6 +70,9 @@ class ProjectsReporter implements Reporter {
       encoding: "utf-8",
     });
     this.projects = JSON.parse(projectsData);
+    console.log(
+      `[debug] Loaded ${this.projects.length} projects from projects.json`,
+    );
 
     // Add archived / no-url projects that weren't tested
     for (const project of this.projects) {
@@ -102,12 +113,21 @@ class ProjectsReporter implements Reporter {
       deploy_down,
       archive,
     };
+    console.log(
+      `[debug] Summary: total=${this.repos.length}, active=${active}, deploy_down=${deploy_down}, archive=${archive}`,
+    );
 
     // Write per-repo badge JSON files (public repos only)
     for (const repo of this.repos) {
       const project = this.projects.find((p) => p.repo === repo.repo);
       // Skip private repos — their badges are managed externally in data/private/
-      if (project && !project.repoUrl) continue;
+      if (project && !project.repoUrl) {
+        console.log(
+          `[debug] Skipping badge write for private repo: ${repo.repo}`,
+        );
+        continue;
+      }
+      console.log(`[debug] Writing badge for: ${repo.repo} (${repo.status})`);
       await fs.writeFile(
         `./data/${repo.repo}.json`,
         JSON.stringify(repo.badge, null, 2),
