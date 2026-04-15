@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="58" height="200" viewBox="0 0 58 200">
-      <rect width="58" height="200" fill="#fff" rx="6"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="770" height="200" viewBox="0 0 770 200">
+      <rect width="770" height="200" fill="#fff" rx="6"/>
       
     <rect x="40" y="2" width="10" height="10" fill="#43a047" rx="2"/>
     <text x="54" y="11" font-size="10" fill="#666">Active</text>
@@ -9,6 +9,6 @@
     <text x="204" y="11" font-size="10" fill="#666">Archive</text>
   
       <text x="35" y="174" text-anchor="end" font-size="10" fill="#666">0</text><text x="35" y="94" text-anchor="end" font-size="10" fill="#666">7</text><text x="35" y="14" text-anchor="end" font-size="10" fill="#666">14</text>
-      <line x1="40" y1="170" x2="58" y2="170" stroke="#ccc" stroke-width="1"/>
-      <rect x="40" y="10" width="7" height="160" fill="#43a047" rx="1"/>
+      <line x1="40" y1="170" x2="770" y2="170" stroke="#ccc" stroke-width="1"/>
+      <rect x="752" y="10" width="7" height="160" fill="#43a047" rx="1"/>
     </svg>

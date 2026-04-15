@@ -57,22 +57,26 @@ const generateTableHTML = (repos: RepoStatus[], projects: ProjectEntry[]) => {
 const generateChartSVGContent = (
   reportEntries: { summary: Summary; repos: RepoStatus[] }[],
 ) => {
+  const maxSlots = 90;
   const chartWidth = 800;
   const chartHeight = 200;
-  const barWidth = Math.max(4, Math.floor((chartWidth - 60) / 90));
+  const barWidth = Math.max(4, Math.floor((chartWidth - 60) / maxSlots));
   const paddingLeft = 40;
   const paddingBottom = 30;
   const plotHeight = chartHeight - paddingBottom - 10;
 
   // Use the last 90 entries
-  const entries = reportEntries.slice(-90);
+  const entries = reportEntries.slice(-maxSlots);
   if (entries.length === 0) return "";
 
   const maxRepos = Math.max(...entries.map((e) => e.summary.repos_count), 1);
 
+  // Right-align bars so newest entries appear on the right
+  const startSlot = maxSlots - entries.length;
+
   let bars = "";
   entries.forEach((entry, i) => {
-    const x = paddingLeft + i * barWidth;
+    const x = paddingLeft + (startSlot + i) * barWidth;
     const { active = 0, deploy_down = 0, archive = 0 } = entry.summary;
     const total = active + deploy_down + archive;
 
@@ -118,7 +122,7 @@ const generateChartSVGContent = (
     <text x="${paddingLeft + 164}" y="11" font-size="10" fill="#666">Archive</text>
   `;
 
-  const totalWidth = paddingLeft + entries.length * barWidth + 10;
+  const totalWidth = paddingLeft + maxSlots * barWidth + 10;
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${totalWidth}" height="${chartHeight}" viewBox="0 0 ${totalWidth} ${chartHeight}">
       <rect width="${totalWidth}" height="${chartHeight}" fill="#fff" rx="6"/>
