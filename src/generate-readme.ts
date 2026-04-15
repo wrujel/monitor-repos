@@ -54,7 +54,7 @@ const generateTableHTML = (repos: RepoStatus[], projects: ProjectEntry[]) => {
   `;
 };
 
-const generateChartSVG = (
+const generateChartSVGContent = (
   reportEntries: { summary: Summary; repos: RepoStatus[] }[],
 ) => {
   const chartWidth = 800;
@@ -120,15 +120,13 @@ const generateChartSVG = (
 
   const totalWidth = paddingLeft + entries.length * barWidth + 10;
 
-  return `<img src="data:image/svg+xml;base64,${Buffer.from(
-    `<svg xmlns="http://www.w3.org/2000/svg" width="${totalWidth}" height="${chartHeight}" viewBox="0 0 ${totalWidth} ${chartHeight}">
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${totalWidth}" height="${chartHeight}" viewBox="0 0 ${totalWidth} ${chartHeight}">
       <rect width="${totalWidth}" height="${chartHeight}" fill="#fff" rx="6"/>
       ${legend}
       ${yAxisLabels}
       <line x1="${paddingLeft}" y1="${chartHeight - paddingBottom}" x2="${totalWidth}" y2="${chartHeight - paddingBottom}" stroke="#ccc" stroke-width="1"/>
       ${bars}
-    </svg>`,
-  ).toString("base64")}" alt="Last 90 days chart"/>`;
+    </svg>`;
 };
 
 (async () => {
@@ -149,9 +147,17 @@ const generateChartSVG = (
 
   const { summary, repos } = latestEntry;
 
+  const svgContent = generateChartSVGContent(reportEntries);
+  if (svgContent) {
+    await fs.writeFile("./data/chart.svg", svgContent);
+  }
+  const chartImg = svgContent
+    ? `<img src="./data/chart.svg" alt="Last 90 days chart"/>`
+    : "";
+
   const newReadme = template
     .replace(PLACEHOLDER_SUMMARY, generateSummaryHTML(summary))
-    .replace(PLACEHOLDER_CHART, generateChartSVG(reportEntries))
+    .replace(PLACEHOLDER_CHART, chartImg)
     .replace(PLACEHOLDER_TABLE, generateTableHTML(repos, projects));
 
   await fs.writeFile("./README.md", newReadme);

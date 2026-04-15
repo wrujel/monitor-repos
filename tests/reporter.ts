@@ -142,7 +142,11 @@ class ProjectsReporter implements Reporter {
     const reportJson = JSON.parse(rawReport);
 
     if (reportJson.length >= 90) reportJson.shift();
-    reportJson.push({ summary: this.summary, repos: this.repos });
+    const simplifiedRepos = this.repos.map(({ repo, status }) => ({
+      repo,
+      status,
+    }));
+    reportJson.push({ summary: this.summary, repos: simplifiedRepos });
 
     await fs.writeFile(
       "./data/report.json",
