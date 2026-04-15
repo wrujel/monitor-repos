@@ -36,6 +36,7 @@ const fetchAllRepos = async (baseUrl: string): Promise<any[]> => {
     .filter((repo) => repo.topics?.includes(GITHUB_TAG))
     .map((repo) => ({
       repo: repo.name,
+      title: repo.name,
       repoUrl: repo.html_url,
       url: repo.homepage || "",
       archived: repo.archived || false,
@@ -62,6 +63,7 @@ const fetchAllRepos = async (baseUrl: string): Promise<any[]> => {
       }
       return {
         repo: name,
+        title: name,
         repoUrl: "",
         url,
         archived: false,

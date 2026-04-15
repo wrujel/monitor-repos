@@ -1,5 +1,6 @@
 export type ProjectEntry = {
   repo: string;
+  title: string;
   repoUrl: string;
   url: string;
   archived: boolean;
