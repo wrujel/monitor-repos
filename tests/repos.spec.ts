@@ -70,6 +70,28 @@ for (const project of projects) {
         }
       }
     }
+    // Fallback: lightweight HTTP probe to distinguish "deployment down" from "bot-blocked"
+    try {
+      const probe = await fetch(project.url, {
+        method: "HEAD",
+        redirect: "follow",
+        signal: AbortSignal.timeout(DEFAULT_TIMEOUT),
+      });
+      if (probe.status < 500) {
+        console.log(
+          `[debug] [${project.repo}] HTTP probe passed (status: ${probe.status}) — deployment is alive`,
+        );
+        return;
+      }
+      console.log(
+        `[debug] [${project.repo}] HTTP probe returned server error: ${probe.status}`,
+      );
+    } catch (probeError) {
+      console.log(
+        `[debug] [${project.repo}] HTTP probe also failed: ${(probeError as Error).message}`,
+      );
+    }
+
     console.log(`[debug] [${project.repo}] FAILED after ${retries} attempt(s)`);
     throw lastError;
   });
