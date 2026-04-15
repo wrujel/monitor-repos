@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npx tsc",
-    "update-db": "ts-node ./src/update-db.ts",
     "update-repos": "ts-node ./src/update-repos.ts",
-    "scrapper": "ts-node ./src/scrapper.ts",
     "generate-readme": "ts-node ./src/generate-readme.ts",
     "update-cron": "ts-node src/update-cron.ts"
   },
@@ -20,8 +18,6 @@
     "typescript": "^5.8.2"
   },
   "dependencies": {
-    "dotenv": "^16.4.7",
-    "mailgun-js": "^0.22.0",
-    "mongoose": "^8.12.0"
+    "dotenv": "^16.4.7"
   }
 }

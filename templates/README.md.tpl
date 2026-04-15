@@ -1,5 +1,8 @@
 ## Summary:
 %{{summary}}%
 
-## 📝 Repos:
+## � Last 90 Days:
+%{{chart}}%
+
+## �📝 Repos:
 %{{table}}%

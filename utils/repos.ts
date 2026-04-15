@@ -1,1 +1,1 @@
-export const repos = ["admin-dashboard-next","movies-search","airbnb-clone","clock-app","django-crud-react","github-history","netflix-clone","rest-api-et","slider-static","tesla-landing","tetris-javascript","webpage-gpt","portfolio-web-template"];
+export const repos = ["admin-dashboard-next","airbnb-clone","clock-app","django-crud-react","github-history","movies-search","netflix-clone","portfolio-web-template","rest-api-et","slider-static","tesla-landing","tetris-javascript","webpage-gpt"];

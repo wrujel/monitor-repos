@@ -1,8 +1,0 @@
-{
-  "schemaVersion": 1,
-  "label": "status",
-  "message": "active",
-  "color": "green",
-  "style": "for-the-badge",
-  "namedLogo": "github"
-}

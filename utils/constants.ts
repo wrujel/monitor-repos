@@ -3,6 +3,7 @@ dotenv.config();
 
 export const PLACEHOLDER_SUMMARY = "%{{summary}}%";
 export const PLACEHOLDER_TABLE = "%{{table}}%";
+export const PLACEHOLDER_CHART = "%{{chart}}%";
 export const ROOT_PATH = process.env.ROOT_PATH;
 
 export const headers = {
@@ -13,3 +14,5 @@ export const headers = {
 };
 
 export const PASSED_STATUS = "active";
+export const DEPLOY_DOWN_STATUS = "deploy-down";
+export const ARCHIVE_STATUS = "archive";
