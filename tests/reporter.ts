@@ -117,16 +117,8 @@ class ProjectsReporter implements Reporter {
       `[debug] Summary: total=${this.repos.length}, active=${active}, deploy_down=${deploy_down}, archive=${archive}`,
     );
 
-    // Write per-repo badge JSON files (public repos only)
+    // Write per-repo badge JSON files
     for (const repo of this.repos) {
-      const project = this.projects.find((p) => p.repo === repo.repo);
-      // Skip private repos — their badges are managed externally in data/private/
-      if (project && !project.repoUrl) {
-        console.log(
-          `[debug] Skipping badge write for private repo: ${repo.repo}`,
-        );
-        continue;
-      }
       console.log(`[debug] Writing badge for: ${repo.repo} (${repo.status})`);
       await fs.writeFile(
         `./data/${repo.repo}.json`,

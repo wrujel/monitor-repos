@@ -1,5 +1,4 @@
 import { promises as fs } from "fs";
-import path from "path";
 import { headers } from "../utils/constants";
 import { ProjectEntry } from "../utils/types";
 import dotenv from "dotenv";
@@ -36,66 +35,31 @@ const fetchAllRepos = async (baseUrl: string): Promise<any[]> => {
     .filter((repo) => repo.topics?.includes(GITHUB_TAG))
     .map((repo) => ({
       repo: repo.name,
-      title: repo.name,
+      title: repo.name, //TODO: extract title from README or description in the future
       repoUrl: repo.html_url,
       url: repo.homepage || "",
       archived: repo.archived || false,
       visibility: "public" as const,
     }));
 
-  // 2. Read private repos from data/private/
-  const privateFiles = await fs.readdir("./data/private");
-  const privateRepoFiles = privateFiles.filter(
-    (f) => f.endsWith(".json") && !f.includes("_deploy"),
-  );
+  // 2. Read private repos from data/projects.json
+  let existingProjects: ProjectEntry[] = [];
+  try {
+    const raw = await fs.readFile("./data/projects.json", {
+      encoding: "utf-8",
+    });
+    existingProjects = JSON.parse(raw) as ProjectEntry[];
+  } catch {
+    // no existing projects file
+  }
 
-  const privateProjects: ProjectEntry[] = await Promise.all(
-    privateRepoFiles.map(async (f) => {
-      const name = path.basename(f, ".json");
-      let url = "";
-      let service: string | undefined;
-      try {
-        const deployData = await fs.readFile(
-          `./data/private/${name}_deploy.json`,
-          { encoding: "utf-8" },
-        );
-        const deploy = JSON.parse(deployData);
-        url = deploy.url ?? "";
-        service = deploy.service ?? undefined;
-      } catch {
-        // no deploy file for this private repo
-      }
-      return {
-        repo: name,
-        title: name,
-        repoUrl: "",
-        url,
-        archived: false,
-        visibility: "private" as const,
-        ...(service !== undefined && { service }),
-      };
-    }),
+  const privateProjects: ProjectEntry[] = existingProjects.filter(
+    (p) => p.visibility === "private",
   );
 
   const allProjects: ProjectEntry[] = [...publicProjects, ...privateProjects];
 
-  // 3. Write utils/repos.ts — public non-archived repo names only (for tests)
-  const publicTestableRepos = publicProjects
-    .filter((p) => !p.archived)
-    .map((p) => p.repo);
-
-  const template = await fs.readFile("./templates/repos.ts.tpl", {
-    encoding: "utf-8",
-  });
-  const reposTemplate = template.replace(
-    "%repos%",
-    JSON.stringify(publicTestableRepos),
-  );
-  await fs.writeFile("./utils/repos.ts", reposTemplate, {
-    encoding: "utf-8",
-  });
-
-  // 4. Write data/repos.json — all repo names
+  // 3. Write data/repos.json — all repo names
   const allRepoNames = allProjects.map((p) => p.repo);
   await fs.writeFile(
     "./data/repos.json",
@@ -103,14 +67,14 @@ const fetchAllRepos = async (baseUrl: string): Promise<any[]> => {
     { encoding: "utf-8" },
   );
 
-  // 5. Write data/projects.json — flat project entries
+  // 4. Write data/projects.json — flat project entries
   await fs.writeFile(
     "./data/projects.json",
     JSON.stringify(allProjects, null, 2),
     { encoding: "utf-8" },
   );
 
-  // 6. Write data/projects_history.json — record date when repoUrl or url changes
+  // 5. Write data/projects_history.json — record date when repoUrl or url changes
   type HistoryEntry = {
     repo: string;
     repoUrl: string;
