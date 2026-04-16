@@ -40,6 +40,7 @@ const fetchAllRepos = async (baseUrl: string): Promise<any[]> => {
       repoUrl: repo.html_url,
       url: repo.homepage || "",
       archived: repo.archived || false,
+      visibility: "public" as const,
     }));
 
   // 2. Read private repos from data/private/
@@ -52,12 +53,15 @@ const fetchAllRepos = async (baseUrl: string): Promise<any[]> => {
     privateRepoFiles.map(async (f) => {
       const name = path.basename(f, ".json");
       let url = "";
+      let service: string | undefined;
       try {
         const deployData = await fs.readFile(
           `./data/private/${name}_deploy.json`,
           { encoding: "utf-8" },
         );
-        url = JSON.parse(deployData).url ?? "";
+        const deploy = JSON.parse(deployData);
+        url = deploy.url ?? "";
+        service = deploy.service ?? undefined;
       } catch {
         // no deploy file for this private repo
       }
@@ -67,6 +71,8 @@ const fetchAllRepos = async (baseUrl: string): Promise<any[]> => {
         repoUrl: "",
         url,
         archived: false,
+        visibility: "private" as const,
+        ...(service !== undefined && { service }),
       };
     }),
   );

@@ -4,6 +4,7 @@
   "message": "building",
   "color": "yellow",
   "url": "https://wrujel.com",
+  "service": "vercel",
   "style": "for-the-badge",
   "namedLogo": "vercel"
 }

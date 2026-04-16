@@ -4,6 +4,8 @@ export type ProjectEntry = {
   repoUrl: string;
   url: string;
   archived: boolean;
+  visibility: "public" | "private";
+  service?: string;
 };
 
 export type Project = {
