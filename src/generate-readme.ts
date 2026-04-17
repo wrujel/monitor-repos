@@ -112,17 +112,20 @@ const generateChartSVGContent = (
     })
     .join("");
 
-  // Legend
-  const legend = `
-    <rect x="${paddingLeft}" y="2" width="10" height="10" fill="#43a047" rx="2"/>
-    <text x="${paddingLeft + 14}" y="11" font-size="10" fill="#666">Active</text>
-    <rect x="${paddingLeft + 60}" y="2" width="10" height="10" fill="#e53935" rx="2"/>
-    <text x="${paddingLeft + 74}" y="11" font-size="10" fill="#666">Deploy Down</text>
-    <rect x="${paddingLeft + 150}" y="2" width="10" height="10" fill="#9e9e9e" rx="2"/>
-    <text x="${paddingLeft + 164}" y="11" font-size="10" fill="#666">Archive</text>
-  `;
-
   const totalWidth = paddingLeft + maxSlots * barWidth + 10;
+
+  // Legend at bottom right
+  const legendRectY = chartHeight - paddingBottom + 10;
+  const legendTextY = legendRectY + 9;
+  const legendStartX = totalWidth - 216;
+  const legend = `
+    <rect x="${legendStartX}" y="${legendRectY}" width="10" height="10" fill="#43a047" rx="2"/>
+    <text x="${legendStartX + 14}" y="${legendTextY}" font-size="10" fill="#666">Active</text>
+    <rect x="${legendStartX + 60}" y="${legendRectY}" width="10" height="10" fill="#e53935" rx="2"/>
+    <text x="${legendStartX + 74}" y="${legendTextY}" font-size="10" fill="#666">Deploy Down</text>
+    <rect x="${legendStartX + 150}" y="${legendRectY}" width="10" height="10" fill="#9e9e9e" rx="2"/>
+    <text x="${legendStartX + 164}" y="${legendTextY}" font-size="10" fill="#666">Archive</text>
+  `;
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${totalWidth}" height="${chartHeight}" viewBox="0 0 ${totalWidth} ${chartHeight}">
       <rect width="${totalWidth}" height="${chartHeight}" fill="#fff" rx="6"/>
