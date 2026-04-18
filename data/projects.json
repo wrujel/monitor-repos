@@ -102,14 +102,5 @@
     "url": "https://webpage-gpt-wrujels-projects.vercel.app/",
     "archived": false,
     "visibility": "public"
-  },
-  {
-    "repo": "portfolio",
-    "title": "portfolio",
-    "repoUrl": "",
-    "url": "https://wrujel.com",
-    "archived": false,
-    "visibility": "private",
-    "service": "vercel"
   }
 ]
