@@ -79,8 +79,21 @@
   },
   {
     "repo": "portfolio",
-    "repoUrl": "",
+    "repoUrl": "https://github.com/wrujel/portfolio",
     "url": "https://wrujel.com",
+    "changes": [
+      {
+        "date": "2026-04-18",
+        "field": "repoUrl",
+        "from": "",
+        "to": "https://github.com/wrujel/portfolio"
+      }
+    ]
+  },
+  {
+    "repo": "blog",
+    "repoUrl": "https://github.com/wrujel/blog",
+    "url": "https://blog.wrujel.com",
     "changes": []
   }
 ]
