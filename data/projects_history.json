@@ -79,7 +79,7 @@
   },
   {
     "repo": "portfolio",
-    "repoUrl": "https://github.com/wrujel/portfolio",
+    "repoUrl": "",
     "url": "https://wrujel.com",
     "changes": [
       {
@@ -87,13 +87,26 @@
         "field": "repoUrl",
         "from": "",
         "to": "https://github.com/wrujel/portfolio"
+      },
+      {
+        "date": "2026-04-18",
+        "field": "repoUrl",
+        "from": "https://github.com/wrujel/portfolio",
+        "to": ""
       }
     ]
   },
   {
     "repo": "blog",
-    "repoUrl": "https://github.com/wrujel/blog",
+    "repoUrl": "",
     "url": "https://blog.wrujel.com",
-    "changes": []
+    "changes": [
+      {
+        "date": "2026-04-18",
+        "field": "repoUrl",
+        "from": "https://github.com/wrujel/blog",
+        "to": ""
+      }
+    ]
   }
 ]
