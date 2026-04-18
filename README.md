@@ -1,7 +1,7 @@
 ## 📊 Summary:
 <p><ul>
             <li><span>Number of Repos: 15</span></li>
-            <li><span>Last Update: Sat, 18 Apr 2026 16:48:41 GMT</span></li>
+            <li><span>Last Update: Sat, 18 Apr 2026 16:55:36 GMT</span></li>
             <li><span>Active: 15</span></li>
             <li><span>Deploy Down: 0</span></li>
             <li><span>Archive: 0</span></li>
@@ -74,11 +74,11 @@
                                   <td><a href="https://webpage-gpt-wrujels-projects.vercel.app/">Link</a></td>
                                   <td>✅</td>
                                 </tr><tr>
-                                  <td><a href="https://github.com/wrujel/blog">blog</a></td>
+                                  <td>blog</td>
                                   <td><a href="https://blog.wrujel.com">Link</a></td>
                                   <td>✅</td>
                                 </tr><tr>
-                                  <td><a href="https://github.com/wrujel/portfolio">portfolio</a></td>
+                                  <td>portfolio</td>
                                   <td><a href="https://wrujel.com">Link</a></td>
                                   <td>✅</td>
                                 </tr>
