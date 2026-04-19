@@ -1,8 +1,8 @@
 ## 📊 Summary:
 <p><ul>
-            <li><span>Number of Repos: 15</span></li>
-            <li><span>Last Update: Sun, 19 Apr 2026 05:45:28 GMT</span></li>
-            <li><span>Active: 15</span></li>
+            <li><span>Number of Repos: 16</span></li>
+            <li><span>Last Update: Sun, 19 Apr 2026 07:33:24 GMT</span></li>
+            <li><span>Active: 16</span></li>
             <li><span>Deploy Down: 0</span></li>
             <li><span>Archive: 0</span></li>
           </ul></p>
@@ -76,6 +76,10 @@
                                 </tr><tr>
                                   <td>blog</td>
                                   <td><a href="https://blog.wrujel.com">Link</a></td>
+                                  <td>✅</td>
+                                </tr><tr>
+                                  <td>leetcode-ui</td>
+                                  <td><a href="https://leetcode-tracker-qvf.pages.dev">Link</a></td>
                                   <td>✅</td>
                                 </tr><tr>
                                   <td>portfolio</td>
