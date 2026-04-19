@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "label": "status",
-  "message": "active",
+  "label": "deploy",
+  "message": "passing",
   "color": "green",
   "style": "for-the-badge",
-  "namedLogo": "github"
+  "namedLogo": "cloudflare"
 }

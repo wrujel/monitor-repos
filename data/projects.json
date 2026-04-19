@@ -113,6 +113,15 @@
     "service": "vercel"
   },
   {
+    "repo": "leetcode-ui",
+    "title": "leetcode-ui",
+    "repoUrl": "",
+    "url": "https://leetcode-tracker-qvf.pages.dev",
+    "archived": false,
+    "visibility": "private",
+    "service": "cloudflare"
+  },
+  {
     "repo": "portfolio",
     "title": "portfolio",
     "repoUrl": "",

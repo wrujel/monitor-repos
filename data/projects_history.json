@@ -108,5 +108,11 @@
         "to": ""
       }
     ]
+  },
+  {
+    "repo": "leetcode-ui",
+    "repoUrl": "",
+    "url": "https://leetcode-tracker-qvf.pages.dev",
+    "changes": []
   }
 ]
