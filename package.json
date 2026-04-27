@@ -4,20 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx tsc",
-    "update-repos": "ts-node ./src/update-repos.ts",
-    "generate-readme": "ts-node ./src/generate-readme.ts",
-    "update-cron": "ts-node src/update-cron.ts"
+    "build": "tsc --noEmit",
+    "update-repos": "bun ./src/update-repos.ts",
+    "generate-readme": "bun ./src/generate-readme.ts",
+    "update-cron": "bun src/update-cron.ts"
   },
   "author": "wrujel",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.50.1",
     "@types/node": "^22.13.9",
-    "ts-node": "^10.9.2",
     "typescript": "^5.8.2"
-  },
-  "dependencies": {
-    "dotenv": "^16.4.7"
   }
 }

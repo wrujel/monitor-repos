@@ -1,9 +1,6 @@
 import { promises as fs } from "fs";
 import { headers } from "../utils/constants";
 import { ProjectEntry } from "../utils/types";
-import dotenv from "dotenv";
-dotenv.config();
-
 const GITHUB_REPOS = process.env.GITHUB_REPOS;
 const GITHUB_TAG = process.env.GITHUB_TAG;
 
