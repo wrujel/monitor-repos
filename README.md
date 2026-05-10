@@ -1,9 +1,9 @@
 ## 📊 Summary:
 <p><ul>
             <li><span>Number of Repos: 16</span></li>
-            <li><span>Last Update: Sun, 10 May 2026 06:04:39 GMT</span></li>
-            <li><span>Active: 16</span></li>
-            <li><span>Deploy Down: 0</span></li>
+            <li><span>Last Update: Sun, 10 May 2026 07:22:26 GMT</span></li>
+            <li><span>Active: 14</span></li>
+            <li><span>Deploy Down: 2</span></li>
             <li><span>Archive: 0</span></li>
           </ul></p>
   
@@ -60,11 +60,11 @@
                                 </tr><tr>
                                   <td><a href="https://github.com/wrujel/slider-static">slider-static</a></td>
                                   <td><a href="https://ephemeral-zuccutto-49ec06.netlify.app">Link</a></td>
-                                  <td>✅</td>
+                                  <td>❌</td>
                                 </tr><tr>
                                   <td><a href="https://github.com/wrujel/tesla-landing">tesla-landing</a></td>
                                   <td><a href="https://sage-daffodil-4904c3.netlify.app">Link</a></td>
-                                  <td>✅</td>
+                                  <td>❌</td>
                                 </tr><tr>
                                   <td><a href="https://github.com/wrujel/tetris-javascript">tetris-javascript</a></td>
                                   <td><a href="https://tetris-javascript-pi.vercel.app">Link</a></td>
