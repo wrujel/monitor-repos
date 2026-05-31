@@ -1,9 +1,9 @@
 ## 📊 Summary:
 <p><ul>
             <li><span>Number of Repos: 16</span></li>
-            <li><span>Last Update: Sun, 31 May 2026 19:31:33 GMT</span></li>
-            <li><span>Active: 16</span></li>
-            <li><span>Deploy Down: 0</span></li>
+            <li><span>Last Update: Sun, 31 May 2026 20:24:14 GMT</span></li>
+            <li><span>Active: 15</span></li>
+            <li><span>Deploy Down: 1</span></li>
             <li><span>Archive: 0</span></li>
           </ul></p>
   
@@ -36,7 +36,7 @@
                                 </tr><tr>
                                   <td><a href="https://github.com/wrujel/django-crud-react">django-crud-react</a></td>
                                   <td><a href="https://django-crud-react.onrender.com">Link</a></td>
-                                  <td>✅</td>
+                                  <td>❌</td>
                                 </tr><tr>
                                   <td><a href="https://github.com/wrujel/github-history">github-history</a></td>
                                   <td><a href="https://github-history.vercel.app">Link</a></td>
