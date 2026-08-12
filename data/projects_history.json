@@ -112,7 +112,14 @@
   {
     "repo": "leetcode-ui",
     "repoUrl": "",
-    "url": "https://leetcode-tracker-qvf.pages.dev",
-    "changes": []
+    "url": "https://leetcode.wrujel.website/",
+    "changes": [
+      {
+        "date": "2026-08-12",
+        "field": "url",
+        "from": "https://leetcode-tracker-qvf.pages.dev",
+        "to": "https://leetcode.wrujel.website/"
+      }
+    ]
   }
 ]
