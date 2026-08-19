@@ -1,7 +1,7 @@
 ## 📊 Summary:
 <p><ul>
             <li><span>Number of Repos: 16</span></li>
-            <li><span>Last Update: Wed, 19 Aug 2026 02:31:40 GMT</span></li>
+            <li><span>Last Update: Wed, 19 Aug 2026 03:01:59 GMT</span></li>
             <li><span>Active: 16</span></li>
             <li><span>Deploy Down: 0</span></li>
             <li><span>Archive: 0</span></li>
@@ -51,7 +51,7 @@
                                   <td>✅</td>
                                 </tr><tr>
                                   <td><a href="https://github.com/wrujel/portfolio-web-template">portfolio-web-template</a></td>
-                                  <td><a href="https://portfolio-web-wrujel.vercel.app">Link</a></td>
+                                  <td><a href="https://portfolio-web-eight-tau.vercel.app">Link</a></td>
                                   <td>✅</td>
                                 </tr><tr>
                                   <td><a href="https://github.com/wrujel/rest-api-et">rest-api-et</a></td>

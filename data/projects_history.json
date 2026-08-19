@@ -44,8 +44,15 @@
   {
     "repo": "portfolio-web-template",
     "repoUrl": "https://github.com/wrujel/portfolio-web-template",
-    "url": "https://portfolio-web-wrujel.vercel.app",
-    "changes": []
+    "url": "https://portfolio-web-eight-tau.vercel.app",
+    "changes": [
+      {
+        "date": "2026-08-19",
+        "field": "url",
+        "from": "https://portfolio-web-wrujel.vercel.app",
+        "to": "https://portfolio-web-eight-tau.vercel.app"
+      }
+    ]
   },
   {
     "repo": "rest-api-et",
