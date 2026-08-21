@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "label": "status",
-  "message": "deploy-down",
+  "message": "down",
   "color": "red",
   "style": "for-the-badge",
   "namedLogo": "github"
