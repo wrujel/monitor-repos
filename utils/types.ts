@@ -22,6 +22,12 @@ export type RepoStatus = {
   badge?: RepoBadge;
 };
 
+/** One settled run — data/report.json is an array of these, oldest first. */
+export type Report = {
+  summary: Summary;
+  repos: RepoStatus[];
+};
+
 export type RepoBadge = {
   schemaVersion: 1;
   label: string;

@@ -11,6 +11,9 @@
 ## 📅 Last 90 Days:
 <img src="./data/chart.svg" alt="Last 90 days chart"/>
 
+## 📈 Repos Trends (Last 90 Days):
+<table><tr><td><img src="./data/chart-admin-dashboard-next.svg" alt="admin-dashboard-next"/></td><td><img src="./data/chart-airbnb-clone.svg" alt="airbnb-clone"/></td></tr><tr><td><img src="./data/chart-clock-app.svg" alt="clock-app"/></td><td><img src="./data/chart-django-crud-react.svg" alt="django-crud-react"/></td></tr><tr><td><img src="./data/chart-github-history.svg" alt="github-history"/></td><td><img src="./data/chart-movies-search.svg" alt="movies-search"/></td></tr><tr><td><img src="./data/chart-netflix-clone.svg" alt="netflix-clone"/></td><td><img src="./data/chart-portfolio-web-template.svg" alt="portfolio-web-template"/></td></tr><tr><td><img src="./data/chart-rest-api-et.svg" alt="rest-api-et"/></td><td><img src="./data/chart-slider-static.svg" alt="slider-static"/></td></tr><tr><td><img src="./data/chart-tesla-landing.svg" alt="tesla-landing"/></td><td><img src="./data/chart-tetris-javascript.svg" alt="tetris-javascript"/></td></tr><tr><td><img src="./data/chart-webpage-gpt.svg" alt="webpage-gpt"/></td><td><img src="./data/chart-blog.svg" alt="blog"/></td></tr><tr><td><img src="./data/chart-leetcode-ui.svg" alt="leetcode-ui"/></td><td><img src="./data/chart-portfolio.svg" alt="portfolio"/></td></tr></table>
+
 ## 📝 Repos:
 <table>
             <thead>

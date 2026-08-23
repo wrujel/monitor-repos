@@ -1,6 +1,7 @@
 export const PLACEHOLDER_SUMMARY = "%{{summary}}%";
 export const PLACEHOLDER_TABLE = "%{{table}}%";
 export const PLACEHOLDER_CHART = "%{{chart}}%";
+export const PLACEHOLDER_CHART_REPOS = "%{{chart_repos}}%";
 export const ROOT_PATH = process.env.ROOT_PATH;
 
 export const headers = {

@@ -6,8 +6,15 @@ import {
   PLACEHOLDER_SUMMARY,
   PLACEHOLDER_TABLE,
   PLACEHOLDER_CHART,
+  PLACEHOLDER_CHART_REPOS,
 } from "../utils/constants";
-import { ProjectEntry, RepoStatus, Summary } from "../utils/types";
+import { ProjectEntry, Report, RepoStatus, Summary } from "../utils/types";
+import {
+  SLOTS,
+  StatusStyles,
+  buildOverviewCard,
+  buildStripCard,
+} from "../utils/cards";
 
 const generateSummaryHTML = (summary: Summary) => {
   return `<p><ul>
@@ -54,86 +61,148 @@ const generateTableHTML = (repos: RepoStatus[], projects: ProjectEntry[]) => {
   `;
 };
 
-const generateChartSVGContent = (
-  reportEntries: { summary: Summary; repos: RepoStatus[] }[],
-) => {
-  const maxSlots = 90;
-  const chartWidth = 800;
-  const chartHeight = 200;
-  const barWidth = Math.max(4, Math.floor((chartWidth - 60) / maxSlots));
-  const paddingLeft = 40;
-  const paddingBottom = 30;
-  const plotHeight = chartHeight - paddingBottom - 10;
+/* ── Charts ────────────────────────────────────────────────────────────────
+ *
+ * Both charts are the status-page card drawn in utils/cards.ts: 90 day-bars
+ * under a title and a state badge, with the uptime over that window written
+ * between "90 days ago" and "Today". All this module supplies is what our
+ * three repo states look like and how a day maps onto them.
+ */
 
-  // Use the last 90 entries
-  const entries = reportEntries.slice(-maxSlots);
+const REPO_STYLES: StatusStyles = {
+  [PASSED_STATUS]: {
+    bar: "#9fd8a3",
+    badge: "#2da44e",
+    label: "Active",
+    glyph: "check",
+  },
+  [DEPLOY_DOWN_STATUS]: {
+    bar: "#e5534b",
+    badge: "#cf222e",
+    label: "Deploy down",
+    legend: "Deploy Down",
+    glyph: "cross",
+  },
+  [ARCHIVE_STATUS]: {
+    bar: "#b1bac4",
+    badge: "#6e7781",
+    label: "Archived",
+    legend: "Archive",
+    glyph: "dash",
+  },
+};
+
+/** Stacked bottom to top, the order the chart has always used. */
+const STACK_ORDER = [ARCHIVE_STATUS, DEPLOY_DOWN_STATUS, PASSED_STATUS];
+
+const normalize = (status: string) =>
+  status in REPO_STYLES ? status : DEPLOY_DOWN_STATUS;
+
+/**
+ * Days up over days deployed. Archived days are left out of both halves — a
+ * repo that is meant to be dormant should not read as downtime — so a window
+ * with nothing but archived days has no uptime to report.
+ */
+const uptimeOf = (active: number, down: number) =>
+  active + down > 0 ? (active / (active + down)) * 100 : null;
+
+/** The worst thing any repo is doing right now. */
+const fleetStatus = (repos: RepoStatus[]) =>
+  repos.some((r) => r.status === DEPLOY_DOWN_STATUS)
+    ? DEPLOY_DOWN_STATUS
+    : repos.some((r) => r.status === PASSED_STATUS)
+      ? PASSED_STATUS
+      : ARCHIVE_STATUS;
+
+/**
+ * Every repo on one strip: each day is a full-height bar split between
+ * archived, deploy-down and active in proportion to that day's counts, so a
+ * single red sliver still reads at a glance.
+ */
+const generateChartSVGContent = (reportEntries: Report[]) => {
+  const entries = reportEntries.slice(-SLOTS);
   if (entries.length === 0) return "";
 
-  const maxRepos = Math.max(...entries.map((e) => e.summary.repos_count), 1);
+  const days: (Record<string, number> | null)[] = new Array(SLOTS).fill(null);
+  const startSlot = SLOTS - entries.length;
+  let active = 0;
+  let down = 0;
 
-  // Right-align bars so newest entries appear on the right
-  const startSlot = maxSlots - entries.length;
-
-  let bars = "";
   entries.forEach((entry, i) => {
-    const x = paddingLeft + (startSlot + i) * barWidth;
-    const { active = 0, deploy_down = 0, archive = 0 } = entry.summary;
-    const total = active + deploy_down + archive;
-
-    // Stacked bars (bottom to top): archive (gray), deploy-down (red), active (green)
-    const archiveH = (archive / maxRepos) * plotHeight;
-    const downH = (deploy_down / maxRepos) * plotHeight;
-    const activeH = (active / maxRepos) * plotHeight;
-
-    let y = chartHeight - paddingBottom;
-
-    // archive bar
-    if (archiveH > 0) {
-      bars += `<rect x="${x}" y="${y - archiveH}" width="${barWidth - 1}" height="${archiveH}" fill="#9e9e9e" rx="1"/>`;
-      y -= archiveH;
+    const counts: Record<string, number> = {};
+    for (const repo of entry.repos) {
+      const status = normalize(repo.status);
+      counts[status] = (counts[status] ?? 0) + 1;
     }
-    // deploy-down bar
-    if (downH > 0) {
-      bars += `<rect x="${x}" y="${y - downH}" width="${barWidth - 1}" height="${downH}" fill="#e53935" rx="1"/>`;
-      y -= downH;
-    }
-    // active bar
-    if (activeH > 0) {
-      bars += `<rect x="${x}" y="${y - activeH}" width="${barWidth - 1}" height="${activeH}" fill="#43a047" rx="1"/>`;
-    }
+    active += counts[PASSED_STATUS] ?? 0;
+    down += counts[DEPLOY_DOWN_STATUS] ?? 0;
+    days[startSlot + i] = counts;
   });
 
-  // Y-axis labels
-  const yLabels = [0, Math.round(maxRepos / 2), maxRepos];
-  let yAxisLabels = yLabels
-    .map((v) => {
-      const y = chartHeight - paddingBottom - (v / maxRepos) * plotHeight;
-      return `<text x="${paddingLeft - 5}" y="${y + 4}" text-anchor="end" font-size="10" fill="#666">${v}</text>`;
-    })
-    .join("");
+  return buildOverviewCard({
+    title: "All Repos",
+    days,
+    order: STACK_ORDER,
+    status: fleetStatus(entries[entries.length - 1].repos),
+    uptime: uptimeOf(active, down),
+    styles: REPO_STYLES,
+    legend: [PASSED_STATUS, DEPLOY_DOWN_STATUS, ARCHIVE_STATUS],
+  });
+};
 
-  const totalWidth = paddingLeft + maxSlots * barWidth + 10;
+/**
+ * One card per repo, written to ./data/chart-<repo>.svg and laid out two per
+ * row so the markdown table's own cell borders draw the grid.
+ */
+const generatePerRepoCharts = async (
+  reportEntries: Report[],
+): Promise<string> => {
+  const entries = reportEntries.slice(-SLOTS);
+  if (entries.length === 0) return "";
 
-  // Legend at bottom right
-  const legendRectY = chartHeight - paddingBottom + 10;
-  const legendTextY = legendRectY + 9;
-  const legendStartX = totalWidth - 216;
-  const legend = `
-    <rect x="${legendStartX}" y="${legendRectY}" width="10" height="10" fill="#43a047" rx="2"/>
-    <text x="${legendStartX + 14}" y="${legendTextY}" font-size="10" fill="#666">Active</text>
-    <rect x="${legendStartX + 60}" y="${legendRectY}" width="10" height="10" fill="#e53935" rx="2"/>
-    <text x="${legendStartX + 74}" y="${legendTextY}" font-size="10" fill="#666">Deploy Down</text>
-    <rect x="${legendStartX + 150}" y="${legendRectY}" width="10" height="10" fill="#9e9e9e" rx="2"/>
-    <text x="${legendStartX + 164}" y="${legendTextY}" font-size="10" fill="#666">Archive</text>
-  `;
+  const latestEntry = entries[entries.length - 1];
+  const startSlot = SLOTS - entries.length;
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${totalWidth}" height="${chartHeight}" viewBox="0 0 ${totalWidth} ${chartHeight}">
-      <rect width="${totalWidth}" height="${chartHeight}" fill="#fff" rx="6"/>
-      ${legend}
-      ${yAxisLabels}
-      <line x1="${paddingLeft}" y1="${chartHeight - paddingBottom}" x2="${totalWidth}" y2="${chartHeight - paddingBottom}" stroke="#ccc" stroke-width="1"/>
-      ${bars}
-    </svg>`;
+  const cells: string[] = [];
+
+  for (const repo of latestEntry.repos) {
+    // Left to right is oldest to newest; a day the repo was not tracked stays
+    // undefined and is drawn as the "no data" grey.
+    const days: (string | undefined)[] = new Array(SLOTS).fill(undefined);
+    let active = 0;
+    let down = 0;
+
+    entries.forEach((entry, i) => {
+      const r = entry.repos.find((r) => r.repo === repo.repo);
+      if (!r) return;
+      const status = normalize(r.status);
+      days[startSlot + i] = status;
+      if (status === PASSED_STATUS) active++;
+      else if (status === DEPLOY_DOWN_STATUS) down++;
+    });
+
+    const svg = buildStripCard({
+      title: repo.repo,
+      days,
+      status: normalize(repo.status),
+      uptime: uptimeOf(active, down),
+      styles: REPO_STYLES,
+    });
+
+    await fs.writeFile(`./data/chart-${repo.repo}.svg`, svg);
+    cells.push(
+      `<td><img src="./data/chart-${repo.repo}.svg" alt="${repo.repo}"/></td>`,
+    );
+  }
+
+  if (cells.length === 0) return "";
+
+  const cols = 2;
+  const rows: string[] = [];
+  for (let i = 0; i < cells.length; i += cols) {
+    rows.push(`<tr>${cells.slice(i, i + cols).join("")}</tr>`);
+  }
+  return `<table>${rows.join("")}</table>`;
 };
 
 (async () => {
@@ -143,7 +212,7 @@ const generateChartSVGContent = (
     fs.readFile("./data/projects.json", { encoding: "utf-8" }),
   ]);
 
-  const reportEntries = JSON.parse(reportRaw);
+  const reportEntries: Report[] = JSON.parse(reportRaw);
   const projects: ProjectEntry[] = JSON.parse(projectsRaw);
 
   const latestEntry = reportEntries[reportEntries.length - 1];
@@ -162,9 +231,12 @@ const generateChartSVGContent = (
     ? `<img src="./data/chart.svg" alt="Last 90 days chart"/>`
     : "";
 
+  const repoChartsHTML = await generatePerRepoCharts(reportEntries);
+
   const newReadme = template
     .replace(PLACEHOLDER_SUMMARY, generateSummaryHTML(summary))
     .replace(PLACEHOLDER_CHART, chartImg)
+    .replace(PLACEHOLDER_CHART_REPOS, repoChartsHTML)
     .replace(PLACEHOLDER_TABLE, generateTableHTML(repos, projects));
 
   await fs.writeFile("./README.md", newReadme);
