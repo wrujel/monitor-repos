@@ -5,7 +5,8 @@
     "repoUrl": "https://github.com/wrujel/admin-dashboard-next",
     "url": "https://admin-dashboard-next-roan.vercel.app",
     "archived": false,
-    "visibility": "public"
+    "visibility": "public",
+    "service": "vercel"
   },
   {
     "repo": "airbnb-clone",
@@ -13,7 +14,8 @@
     "repoUrl": "https://github.com/wrujel/airbnb-clone",
     "url": "https://demo-airbnb-clone-three-phi-45.vercel.app/",
     "archived": false,
-    "visibility": "public"
+    "visibility": "public",
+    "service": "vercel"
   },
   {
     "repo": "clock-app",
@@ -21,7 +23,8 @@
     "repoUrl": "https://github.com/wrujel/clock-app",
     "url": "https://clock-app-wrujel.vercel.app",
     "archived": false,
-    "visibility": "public"
+    "visibility": "public",
+    "service": "vercel"
   },
   {
     "repo": "django-crud-react",
@@ -29,7 +32,8 @@
     "repoUrl": "https://github.com/wrujel/django-crud-react",
     "url": "https://django-crud-react.onrender.com",
     "archived": false,
-    "visibility": "public"
+    "visibility": "public",
+    "service": "render"
   },
   {
     "repo": "github-history",
@@ -37,7 +41,8 @@
     "repoUrl": "https://github.com/wrujel/github-history",
     "url": "https://github-history.vercel.app",
     "archived": false,
-    "visibility": "public"
+    "visibility": "public",
+    "service": "vercel"
   },
   {
     "repo": "movies-search",
@@ -45,7 +50,8 @@
     "repoUrl": "https://github.com/wrujel/movies-search",
     "url": "https://movies-search-five.vercel.app",
     "archived": false,
-    "visibility": "public"
+    "visibility": "public",
+    "service": "vercel"
   },
   {
     "repo": "netflix-clone",
@@ -53,7 +59,8 @@
     "repoUrl": "https://github.com/wrujel/netflix-clone",
     "url": "https://movies-app-o2ff-git-main-wrujels-projects.vercel.app",
     "archived": false,
-    "visibility": "public"
+    "visibility": "public",
+    "service": "vercel"
   },
   {
     "repo": "portfolio-web-template",
@@ -61,7 +68,8 @@
     "repoUrl": "https://github.com/wrujel/portfolio-web-template",
     "url": "https://portfolio-web-eight-tau.vercel.app",
     "archived": false,
-    "visibility": "public"
+    "visibility": "public",
+    "service": "vercel"
   },
   {
     "repo": "rest-api-et",
@@ -69,7 +77,8 @@
     "repoUrl": "https://github.com/wrujel/rest-api-et",
     "url": "https://rest-api-et.onrender.com",
     "archived": false,
-    "visibility": "public"
+    "visibility": "public",
+    "service": "render"
   },
   {
     "repo": "slider-static",
@@ -77,7 +86,8 @@
     "repoUrl": "https://github.com/wrujel/slider-static",
     "url": "https://ephemeral-zuccutto-49ec06.netlify.app",
     "archived": false,
-    "visibility": "public"
+    "visibility": "public",
+    "service": "netlify"
   },
   {
     "repo": "tesla-landing",
@@ -85,7 +95,8 @@
     "repoUrl": "https://github.com/wrujel/tesla-landing",
     "url": "https://sage-daffodil-4904c3.netlify.app",
     "archived": false,
-    "visibility": "public"
+    "visibility": "public",
+    "service": "netlify"
   },
   {
     "repo": "tetris-javascript",
@@ -93,7 +104,8 @@
     "repoUrl": "https://github.com/wrujel/tetris-javascript",
     "url": "https://tetris-javascript-pi.vercel.app",
     "archived": false,
-    "visibility": "public"
+    "visibility": "public",
+    "service": "vercel"
   },
   {
     "repo": "webpage-gpt",
@@ -101,7 +113,8 @@
     "repoUrl": "https://github.com/wrujel/webpage-gpt",
     "url": "https://webpage-gpt-wrujels-projects.vercel.app/",
     "archived": false,
-    "visibility": "public"
+    "visibility": "public",
+    "service": "vercel"
   },
   {
     "repo": "blog",
