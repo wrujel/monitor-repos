@@ -1,42 +1,33 @@
 name: Monitor Repos
+
+# Render README.md from the data the Content Studio scheduler publishes.
+#
+# This workflow used to own the whole pipeline: fetch the public repos, probe
+# every deployment with Playwright, write the badges, append data/report.json,
+# then render. All of that moved into the studio scheduler's "repos" job on
+# 2026-08-30 — it already did exactly those steps for the private projects, and
+# running them in two places meant two writers fighting over data/. The
+# scheduler is now the sole writer of everything under data/ except the files
+# rendered here, and this is left with the one job it can still do best: turn
+# the published report into the README.
+#
+# So it runs when that data lands, not on a timer of its own. The scheduler's
+# push is what carries data/report.json; its coverage pushes and this job's own
+# commits touch other paths, so neither retriggers it.
 on:
+  push:
+    branches: [main]
+    paths:
+      - data/report.json
+  # a safety net if a push ever slips by: renders identical output and commits
+  # nothing when the data has not moved
   schedule:
-    - cron: "0 */1 * * *"
+    - cron: "0 6 * * *"
   workflow_dispatch:
+
 jobs:
-  run-tests:
-    timeout-minutes: 60
+  generate-readme:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
-      - name: Install dependencies
-        run: bun install
-      - name: Install Playwright Browsers
-        run: bunx playwright install --with-deps chromium
-      - name: Create env file
-        run: |
-          touch .env
-          echo "${{ secrets.ENV_FILE }}" > .env
-          cat .env
-      - name: Update repositories
-        run: bun run update-repos
-      - name: Run Playwright tests
-        run: bunx playwright test --reporter="./tests/reporter.ts"
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: data
-          path: |
-            data
-            utils
-          retention-days: 30
-  generate-report:
-    if: always()
-    runs-on: ubuntu-latest
-    needs: run-tests
     permissions:
       contents: write
     steps:
@@ -49,29 +40,24 @@ jobs:
           bun-version: latest
       - name: Install dependencies
         run: bun install
-      - name: Create env file
-        run: |
-          touch .env
-          echo "${{ secrets.ENV_FILE }}" > .env
-          cat .env
-      - uses: actions/download-artifact@v4
-        if: always()
-        with:
-          name: data
-          path: .
+      # No .env step: generate-readme reads data/report.json, data/projects.json
+      # and templates/README.md.tpl straight off the checkout and needs no
+      # secrets. The step this replaced echoed the whole ENV_FILE secret into
+      # the build log.
       - name: Generate new readme
         run: bun run generate-readme
-      - name: Update cron
-        run: bun run update-cron
       - name: Commit and push changes
         run: |
           git config --local user.email "$USER_EMAIL"
           git config --local user.name "$USER_NAME"
-          git add README.md
-          git add data
-          git add utils
-          git add .github
-          git diff --quiet && git diff --staged --quiet || git commit -m "[bot] Update report"
+          # README.md and the chart SVGs beside it are the only files this
+          # workflow writes, so `data` can only ever stage those. `.github` is
+          # deliberately NOT staged any more: update-cron rewrote
+          # .github/workflows/last-update.json on every run and PUSH_TOKEN has
+          # no `workflow` scope, so every push from 2026-08-25 on was rejected
+          # and the README sat frozen for five days.
+          git add README.md data
+          git diff --quiet && git diff --staged --quiet || git commit -m "[bot] Update readme"
         env:
           USER_EMAIL: ${{ vars.USER_EMAIL }}
           USER_NAME: ${{ vars.USER_NAME }}
