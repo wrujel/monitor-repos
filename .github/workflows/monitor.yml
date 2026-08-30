@@ -11,18 +11,26 @@ name: Monitor Repos
 # rendered here, and this is left with the one job it can still do best: turn
 # the published report into the README.
 #
-# So it runs when that data lands, not on a timer of its own. The scheduler's
-# push is what carries data/report.json; its coverage pushes and this job's own
-# commits touch other paths, so neither retriggers it.
+# So it runs when that data lands, and on nothing else. The scheduler pushes
+# with a fine-grained PAT rather than the Actions GITHUB_TOKEN, so its commits
+# do trigger this; its coverage pushes and this job's own commits touch neither
+# watched path, so neither retriggers it.
+#
+# The two paths are exactly what generate-readme reads. report.json moves on
+# every publish (each one appends an entry), so the filter cannot miss a real
+# refresh; projects.json is watched because the README's table is built from it
+# and a hand edit there would otherwise never be rendered.
+#
+# There is deliberately no cron. The render is a pure function of those two
+# files, so a timed run on unmoved data rewrites the same bytes and commits
+# nothing — and the only thing it could recover, a render that failed after a
+# successful publish, is retried by the next daily publish anyway.
 on:
   push:
     branches: [main]
     paths:
       - data/report.json
-  # a safety net if a push ever slips by: renders identical output and commits
-  # nothing when the data has not moved
-  schedule:
-    - cron: "0 6 * * *"
+      - data/projects.json
   workflow_dispatch:
 
 jobs:
