@@ -1,9 +1,9 @@
 ## 📊 Summary:
 <p><ul>
             <li><span>Number of Repos: 16</span></li>
-            <li><span>Last Update: Wed, 14 Oct 2026 23:22:15 GMT</span></li>
-            <li><span>Active: 16</span></li>
-            <li><span>Deploy Down: 0</span></li>
+            <li><span>Last Update: Thu, 15 Oct 2026 23:22:29 GMT</span></li>
+            <li><span>Active: 15</span></li>
+            <li><span>Deploy Down: 1</span></li>
             <li><span>Archive: 0</span></li>
           </ul></p>
   
@@ -83,7 +83,7 @@
                                 </tr><tr>
                                   <td>leetcode-ui</td>
                                   <td><a href="https://leetcode.wrujel.website/">Link</a></td>
-                                  <td>✅</td>
+                                  <td>❌</td>
                                 </tr><tr>
                                   <td>portfolio</td>
                                   <td><a href="https://wrujel.com">Link</a></td>
