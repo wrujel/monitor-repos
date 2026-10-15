@@ -131,8 +131,7 @@
     "repoUrl": "",
     "url": "https://leetcode.wrujel.website/",
     "archived": false,
-    "visibility": "private",
-    "service": "cloudflare"
+    "visibility": "private"
   },
   {
     "repo": "portfolio",
