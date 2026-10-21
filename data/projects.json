@@ -129,9 +129,10 @@
     "repo": "leetcode-ui",
     "title": "leetcode-ui",
     "repoUrl": "",
-    "url": "https://leetcode.wrujel.website/",
+    "url": "https://leetcode-ui.wilfredo-rujel.workers.dev/",
     "archived": false,
-    "visibility": "private"
+    "visibility": "private",
+    "service": "cloudflare"
   },
   {
     "repo": "portfolio",

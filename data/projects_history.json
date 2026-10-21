@@ -119,13 +119,19 @@
   {
     "repo": "leetcode-ui",
     "repoUrl": "",
-    "url": "https://leetcode.wrujel.website/",
+    "url": "https://leetcode-ui.wilfredo-rujel.workers.dev/",
     "changes": [
       {
         "date": "2026-08-12",
         "field": "url",
         "from": "https://leetcode-tracker-qvf.pages.dev",
         "to": "https://leetcode.wrujel.website/"
+      },
+      {
+        "date": "2026-10-21",
+        "field": "url",
+        "from": "https://leetcode.wrujel.website/",
+        "to": "https://leetcode-ui.wilfredo-rujel.workers.dev/"
       }
     ]
   }
